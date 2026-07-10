@@ -72,11 +72,11 @@ export default function Home() {
       <main>
         {/* hero */}
         <section aria-labelledby="hero-heading" className="mx-auto w-full max-w-6xl px-6 md:px-10 pt-32 md:pt-40 pb-10">
-          <h1 id="hero-heading" className="mega" style={{ fontSize: "clamp(1.8rem, 10.5vw, 10rem)" }}>
-            <span className="hero-line">
+          <h1 id="hero-heading" className="mega">
+            <span className="hero-line" style={{ fontSize: "clamp(2.6rem, 15.5vw, 11.4rem)" }}>
               <span>Thichanon</span>
             </span>
-            <span className="hero-line">
+            <span className="hero-line" style={{ fontSize: "clamp(1.8rem, 10.3vw, 7.6rem)" }}>
               <span>
                 Ratanasaenwan<span style={{ color: "var(--accent)" }}>.</span>
               </span>
