@@ -1,13 +1,23 @@
 import { projects, type Project } from "@/data/projects";
 
-const EMAIL = "diy.binary@gmail.com";
+const EMAIL = "nonnylnwzaza.1122@gmail.com";
 const GITHUB = "https://github.com/NTCHz";
 
 const skills: { group: string; items: string }[] = [
-  { group: "AI / Backend", items: "RAG · LLM pipelines · OCR · Elysia + Bun · FastAPI · Express · Prisma / Drizzle" },
+  {
+    group: "AI / Backend",
+    items:
+      "RAG · LLM pipelines · OCR · Elysia + Bun · FastAPI · Express · Prisma / Drizzle",
+  },
   { group: "Frontend", items: "Next.js · Nuxt / Vue · Expo · Tailwind" },
-  { group: "LINE Platform", items: "LIFF · LINE OA bots · messaging automation" },
-  { group: "Infra", items: "Docker · Proxmox · Coolify · Cloudflare · self-hosted CI/CD" },
+  {
+    group: "LINE Platform",
+    items: "LIFF · LINE OA bots · messaging automation",
+  },
+  {
+    group: "Infra",
+    items: "Docker · Proxmox · Coolify · Cloudflare · self-hosted CI/CD",
+  },
 ];
 
 function ProjectRow({ project }: { project: Project }) {
@@ -39,7 +49,12 @@ function ProjectRow({ project }: { project: Project }) {
   );
 
   return project.github ? (
-    <a href={project.github} className="project-row" target="_blank" rel="noreferrer">
+    <a
+      href={project.github}
+      className="project-row"
+      target="_blank"
+      rel="noreferrer"
+    >
       {inner}
     </a>
   ) : (
@@ -54,8 +69,11 @@ export default function Home() {
   return (
     <main className="mx-auto w-full max-w-5xl px-6 md:px-10">
       {/* hero */}
-      <section aria-labelledby="hero-heading" className="pt-24 md:pt-36 pb-[var(--space-section)]">
-        <p className="eyebrow rise">thichanon ratanasaenwan · nonny</p>
+      <section
+        aria-labelledby="hero-heading"
+        className="pt-24 md:pt-36 pb-[var(--space-section)]"
+      >
+        <p className="eyebrow rise">thichanon ratanasaenwan · nont</p>
         <h1
           id="hero-heading"
           className="font-display rise rise-2 mt-6 leading-[1.02]"
@@ -70,17 +88,43 @@ export default function Home() {
             apps, and the DevOps that keeps them running — plus research
             projects at CMU.
           </p>
-          <dl className="manifest rise rise-4" aria-label="How this site is served">
-            <div><dt className="inline">host&nbsp;&nbsp;&nbsp;&nbsp;</dt><dd className="inline"><b>proxmox → coolify</b></dd></div>
-            <div><dt className="inline">edge&nbsp;&nbsp;&nbsp;&nbsp;</dt><dd className="inline"><b>cloudflare tunnel</b></dd></div>
-            <div><dt className="inline">stack&nbsp;&nbsp;&nbsp;</dt><dd className="inline"><b>next.js · typescript</b></dd></div>
-            <div><dt className="inline">status&nbsp;&nbsp;</dt><dd className="inline"><span className="ok">● self-hosted from my homelab</span></dd></div>
+          <dl
+            className="manifest rise rise-4"
+            aria-label="How this site is served"
+          >
+            <div>
+              <dt className="inline">host&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+              <dd className="inline">
+                <b>proxmox → coolify</b>
+              </dd>
+            </div>
+            <div>
+              <dt className="inline">edge&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+              <dd className="inline">
+                <b>cloudflare tunnel</b>
+              </dd>
+            </div>
+            <div>
+              <dt className="inline">stack&nbsp;&nbsp;&nbsp;</dt>
+              <dd className="inline">
+                <b>next.js · typescript</b>
+              </dd>
+            </div>
+            <div>
+              <dt className="inline">status&nbsp;&nbsp;</dt>
+              <dd className="inline">
+                <span className="ok">● self-hosted from my homelab</span>
+              </dd>
+            </div>
           </dl>
         </div>
       </section>
 
       {/* projects */}
-      <section aria-labelledby="work-heading" className="pb-[var(--space-section)]">
+      <section
+        aria-labelledby="work-heading"
+        className="pb-[var(--space-section)]"
+      >
         <p className="eyebrow" id="work-heading">
           flagship systems
         </p>
@@ -98,7 +142,10 @@ export default function Home() {
       </section>
 
       {/* about / skills */}
-      <section aria-labelledby="about-heading" className="pb-[var(--space-section)]">
+      <section
+        aria-labelledby="about-heading"
+        className="pb-[var(--space-section)]"
+      >
         <p className="eyebrow" id="about-heading">
           about
         </p>
@@ -121,7 +168,10 @@ export default function Home() {
       </section>
 
       {/* contact */}
-      <section aria-labelledby="contact-heading" className="pb-[var(--space-section)]">
+      <section
+        aria-labelledby="contact-heading"
+        className="pb-[var(--space-section)]"
+      >
         <p className="eyebrow" id="contact-heading">
           contact
         </p>
@@ -130,10 +180,18 @@ export default function Home() {
           <em className="text-[var(--signal)]">that ships.</em>
         </h2>
         <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4 font-mono text-sm">
-          <a className="text-[var(--paper)] hover:text-[var(--signal)] transition-colors" href={`mailto:${EMAIL}`}>
+          <a
+            className="text-[var(--paper)] hover:text-[var(--signal)] transition-colors"
+            href={`mailto:${EMAIL}`}
+          >
             {EMAIL}
           </a>
-          <a className="text-[var(--paper)] hover:text-[var(--signal)] transition-colors" href={GITHUB} target="_blank" rel="noreferrer">
+          <a
+            className="text-[var(--paper)] hover:text-[var(--signal)] transition-colors"
+            href={GITHUB}
+            target="_blank"
+            rel="noreferrer"
+          >
             github.com/NTCHz ↗
           </a>
         </div>
