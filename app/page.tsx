@@ -65,7 +65,7 @@ export default function Home() {
         <span>
           <a href="/resume.pdf" target="_blank" rel="noreferrer">Resume ↓</a>
           {"  ·  "}
-          <a href={`mailto:${EMAIL}`}>Contact ↗</a>
+          <a href={`mailto:${EMAIL}`}>Contact ↗︎</a>
         </span>
       </header>
 
@@ -134,7 +134,7 @@ export default function Home() {
                     <span className="a-no">{String(i + 5).padStart(2, "0")}</span>
                     <span className="a-name">
                       {p.name}
-                      {p.github ? " ↗" : ""}
+                      {p.github ? " ↗︎" : ""}
                     </span>
                     <span className="a-desc">{p.description}</span>
                     <span className="a-tech">{p.tech.slice(0, 3).join(" · ")}</span>

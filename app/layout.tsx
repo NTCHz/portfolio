@@ -47,7 +47,39 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${display.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Thichanon Ratanasaenwan",
+              alternateName: "Nont",
+              jobTitle: "Full-stack Developer",
+              url: "https://portfolio.vlls.space",
+              email: "mailto:nonnylnwzaza.1122@gmail.com",
+              address: { "@type": "PostalAddress", addressLocality: "Chiang Mai", addressCountry: "TH" },
+              alumniOf: { "@type": "CollegeOrUniversity", name: "Chiang Mai University" },
+              sameAs: [
+                "https://github.com/NTCHz",
+                "https://www.linkedin.com/in/thichanon-ratanasaenwan",
+                "https://instagram.com/ntchz.rw",
+              ],
+              knowsAbout: [
+                "RAG / LLM pipelines",
+                "LINE platform (LIFF, OA)",
+                "Next.js",
+                "ElysiaJS / Bun",
+                "FastAPI",
+                "PostgreSQL",
+                "Self-hosted DevOps (Proxmox, Coolify, Cloudflare Tunnel)",
+              ],
+            }),
+          }}
+        />
+      </body>
     </html>
   );
 }
