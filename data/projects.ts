@@ -3,6 +3,7 @@ export type Project = {
   name: string
   description: string
   tech: string[]
+  proof?: string
   github?: string
   live?: string
   featured?: boolean
@@ -17,6 +18,7 @@ export const projects: Project[] = [
     description:
       'ChatGPT-style chat platform with a pluggable provider layer (OpenAI / Anthropic / Gemini), auth and chat history. Next.js BFF over an async FastAPI backend, shipped with Docker + Caddy.',
     tech: ['Next.js', 'FastAPI', 'PostgreSQL', 'Docker'],
+    proof: '3 LLM providers behind one abstraction · separate renderer + reranker services',
     featured: true,
   },
   {
@@ -25,6 +27,7 @@ export const projects: Project[] = [
     description:
       'AI math-learning platform: RAG chat over real textbooks, auto quiz generation and summaries. RabbitMQ job pipeline, Redis rate-limiting, Pinecone retrieval + rerank.',
     tech: ['Elysia · Bun', 'LangChain', 'Pinecone', 'RabbitMQ', 'MinIO'],
+    proof: 'async job pipeline — RabbitMQ workers · Redis throttling · SSE status',
     featured: true,
   },
   {
@@ -33,6 +36,7 @@ export const projects: Project[] = [
     description:
       'Repair-job platform in four apps — admin, superadmin, LIFF, Expo mobile — with PDF generation, push notifications and OpenTelemetry tracing.',
     tech: ['Elysia · Bun', 'Prisma', 'Expo', 'LINE LIFF'],
+    proof: '4 apps on one Bun API — admin · superadmin · LIFF · Expo mobile',
     featured: true,
   },
   {
@@ -41,6 +45,8 @@ export const projects: Project[] = [
     description:
       'LINE OA group manager + shipment tracking: automated mention replies, broadcasts, product carousels, AI intent analysis, Azure AD login.',
     tech: ['Next.js', 'LINE Bot SDK', 'OpenAI', 'Prisma'],
+    proof: 'AI intent analysis + human review loop · Azure AD SSO',
+    featured: true,
   },
   {
     slug: 'langhorpak',

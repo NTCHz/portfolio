@@ -110,7 +110,7 @@ body {
 }
 .tile-path {
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   color: var(--dim);
   letter-spacing: 0.04em;
 }
@@ -121,7 +121,7 @@ body {
 
 .tag {
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   letter-spacing: 0.06em;
   color: var(--dim);
   border: 1px solid var(--line);
@@ -174,4 +174,71 @@ a:focus-visible,
   @keyframes blink {
     50% { opacity: 0; }
   }
+}
+
+/* sticky mini-nav */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.5rem;
+  background: rgba(5, 7, 11, 0.92);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.75rem;
+}
+.site-nav a {
+  color: var(--text);
+  transition: color 0.2s var(--ease-expo);
+}
+.site-nav a:hover {
+  color: var(--signal);
+}
+
+/* proof line inside featured tiles */
+.proof {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.72rem;
+  color: var(--status);
+  margin-top: 0.6rem;
+}
+.proof::before {
+  content: "▸ ";
+}
+
+/* compact system index row */
+.sys-row {
+  display: grid;
+  grid-template-columns: minmax(9rem, 12rem) 1fr auto;
+  gap: 1rem;
+  align-items: baseline;
+  border-top: 1px solid var(--line);
+  padding: 0.75rem 0.25rem;
+  transition: background 0.2s var(--ease-expo);
+}
+.sys-row:last-of-type { border-bottom: 1px solid var(--line); }
+.sys-row:hover { background: var(--panel); }
+.sys-row .sys-name {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.82rem;
+  color: var(--bright);
+}
+.sys-row .sys-desc {
+  font-size: 0.82rem;
+  color: var(--dim);
+}
+.sys-row .sys-tags {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.7rem;
+  color: var(--dim);
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .sys-row { grid-template-columns: 1fr; gap: 0.15rem; }
+  .sys-row .sys-tags { display: none; }
 }

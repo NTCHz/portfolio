@@ -39,6 +39,7 @@ function Tile({ project, big }: { project: Project; big?: boolean }) {
       >
         {project.description}
       </p>
+      {project.proof && <p className="proof">{project.proof}</p>}
       <ul className="mt-auto pt-4 flex flex-wrap gap-1.5">
         {project.tech.map((t) => (
           <li key={t} className="tag">
@@ -49,7 +50,7 @@ function Tile({ project, big }: { project: Project; big?: boolean }) {
     </>
   );
 
-  const span = big ? "md:col-span-4 min-h-56" : "md:col-span-2";
+  const span = big ? "min-h-52" : "";
   return project.github ? (
     <a href={project.github} target="_blank" rel="noreferrer" className={`tile ${span}`}>
       {body}
@@ -60,8 +61,21 @@ function Tile({ project, big }: { project: Project; big?: boolean }) {
 }
 
 export default function Home() {
+  const featured = projects.filter((p) => p.featured);
+  const rest = projects.filter((p) => !p.featured);
+
   return (
-    <main className="mx-auto w-full max-w-6xl px-6 md:px-10">
+    <>
+      <header className="site-nav">
+        <span className="text-[var(--dim)]">
+          <span className="signal">~/</span>nont
+        </span>
+        <nav className="flex gap-5" aria-label="Main navigation">
+          <a href={GITHUB} target="_blank" rel="noreferrer">github</a>
+          <a href={`mailto:${EMAIL}`}>contact ↗</a>
+        </nav>
+      </header>
+      <main className="mx-auto w-full max-w-6xl px-6 md:px-10">
       {/* hero */}
       <section
         aria-labelledby="hero-heading"
@@ -84,7 +98,10 @@ export default function Home() {
           <p className="rise rise-3 max-w-md text-base leading-relaxed">
             Full-stack developer. I build production systems end to end — RAG/LLM
             backends, LINE-native apps, and the DevOps that keeps them running.
-            Research projects at CMU.
+            Research projects at Chiang Mai University.
+            <span className="mt-3 block font-mono text-xs text-[var(--dim)]">
+              รับพัฒนาระบบครบวงจร — LINE OA / LIFF · ระบบหลังบ้าน · AI — คุยไทยได้
+            </span>
           </p>
           <dl className="manifest rise rise-4" aria-label="How this site is served">
             <div>
@@ -118,9 +135,29 @@ export default function Home() {
           17 shipped systems — mostly private client &amp; org repos. Happy to
           walk through any of them in an interview.
         </p>
-        <div className="grid gap-3 md:grid-cols-6">
-          {projects.map((p, i) => (
-            <Tile key={p.slug} project={p} big={i === 0} />
+        <div className="grid gap-3 md:grid-cols-2">
+          {featured.map((p) => (
+            <Tile key={p.slug} project={p} big />
+          ))}
+        </div>
+        <p className="mt-12 mb-4 font-mono text-xs text-[var(--dim)]">
+          + {rest.length} more systems — ask me about any of them
+        </p>
+        <div>
+          {rest.map((p) => (
+            <div key={p.slug} className="sys-row">
+              <span className="sys-name">
+                {p.github ? (
+                  <a href={p.github} target="_blank" rel="noreferrer" className="hover:text-[var(--signal)]">
+                    {p.name} <span className="signal">↗</span>
+                  </a>
+                ) : (
+                  p.name
+                )}
+              </span>
+              <span className="sys-desc">{p.description}</span>
+              <span className="sys-tags">{p.tech.slice(0, 3).join(" · ")}</span>
+            </div>
           ))}
         </div>
       </section>
@@ -177,5 +214,6 @@ export default function Home() {
         proxmox box via cloudflare tunnel
       </footer>
     </main>
+    </>
   );
 }
