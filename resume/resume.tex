@@ -1,0 +1,221 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot,
+    top=2 cm,
+    bottom=2 cm,
+    left=2 cm,
+    right=2 cm,
+    footskip=1.0 cm
+]{geometry}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primaryColor}{RGB}{0, 0, 0}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{amsmath}
+\usepackage[
+    pdftitle={Thichanon Ratanasaenwan - Resume},
+    pdfauthor={Thichanon Ratanasaenwan},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+\usepackage[pscoord]{eso-pic}
+\usepackage{calc}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{changepage}
+\usepackage{ifthen}
+\usepackage{needspace}
+\usepackage{iftex}
+
+% Ensure ATS-friendly fonts
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+% Global settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{0.15cm}
+\pagenumbering{gobble}
+
+\titleformat{\section}{\needspace{3\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+\titlespacing{\section}{-1pt}{0.3 cm}{0.2 cm}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
+
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.08 cm,
+        parsep=0.08 cm,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+}
+
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{0 cm}{0 cm}
+}{
+    \end{adjustwidth}
+}
+
+% Simple two-column title/date line
+\newcommand{\datedentry}[2]{%
+  \begin{onecolentry}
+    \noindent #1\hfill #2%
+  \end{onecolentry}
+}
+
+% Header
+\newenvironment{header}{
+    \centering\linespread{1.5}
+}{
+}
+
+\begin{document}
+
+% ===== Header =====
+\begin{header}
+    \fontsize{25 pt}{25 pt}\selectfont Thichanon Ratanasaenwan
+
+    \vspace{5 pt}
+
+    \normalsize
+    Chiang Mai, Thailand \;|\;
+    \href{mailto:Thichanon_r@cmu.ac.th}{Thichanon\_r@cmu.ac.th} \;|\;
+    \href{tel:+66-93-038-1632}{+66 93 038 1632} \;|\;
+    \href{https://github.com/NTCHz}{github.com/NTCHz} \;|\;
+    \href{https://www.linkedin.com/in/thichanon-ratanasaenwan/}{LinkedIn} \;|\;
+    \href{https://portfolio.vlls.space}{portfolio.vlls.space}
+\end{header}
+
+\vspace{2 pt}
+
+% ===== Education =====
+\section{Education}
+\datedentry{\textbf{Chiang Mai University}, B.S. in Computer Science}{2023 -- Present}
+
+\vspace{0.10 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Expected Graduation: 2027 --- Major GPA: 3.54 / 4.00
+        \item Relevant Coursework: Software Engineering, Database Systems, Computer Networks, Pattern Recognition
+    \end{highlights}
+\end{onecolentry}
+
+% ===== Technologies =====
+\section{Technical Skills}
+
+\begin{onecolentry}
+\begin{highlights}
+  \item \textbf{Languages \& Runtime:} TypeScript, JavaScript, Python, Node.js, Bun
+  \item \textbf{Backend \& APIs:} ElysiaJS, FastAPI, Express, REST API, RabbitMQ, Redis
+  \item \textbf{AI / LLM:} RAG pipelines, LangChain, Pinecone / pgvector, OCR, multi-provider LLM integration
+  \item \textbf{Frontend:} Next.js, React, Nuxt/Vue, Expo (React Native), Tailwind CSS
+  \item \textbf{Database \& Storage:} PostgreSQL, Prisma ORM, Drizzle ORM, MinIO / S3
+  \item \textbf{DevOps:} Docker, Docker Compose, Caddy/Traefik, GitHub Actions, Proxmox, Coolify, Cloudflare Tunnel
+  \item \textbf{Integrations:} LINE LIFF, LINE OA / Messaging API, Azure AD SSO
+\end{highlights}
+\end{onecolentry}
+
+
+% ===== Experience =====
+\section{Experience}
+
+\datedentry{\textbf{Full-Stack Developer (Freelance)} — MathBookLM: AI Mathematics Learning Platform (RAG)}{2025 -- Present}
+\vspace{0.1 cm}
+
+\begin{onecolentry}
+    \begin{highlights}
+        \item Built a microservices RAG platform: chat over real textbooks, automated quiz generation and document summarization, using an ElysiaJS/Bun API and a FastAPI + LangChain agent with Pinecone retrieval and reranking.
+        \item Designed an async job pipeline with RabbitMQ workers, Redis rate-limiting and SSE status updates for PDF/OCR processing at scale.
+        \item Operate the full Docker Compose deployment: PostgreSQL, Redis, RabbitMQ, MinIO and Prometheus monitoring.
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.12 cm}
+
+\datedentry{\textbf{Full-Stack Developer (Freelance)} — CorpAi: Multi-Provider LLM Chat Platform}{2025}
+\vspace{0.1 cm}
+
+\begin{onecolentry}
+    \begin{highlights}
+        \item Built a ChatGPT-style chat platform with a pluggable provider layer supporting OpenAI, Anthropic and Gemini behind one abstraction, with auth and chat history.
+        \item Architected a Next.js BFF over an async FastAPI backend (SQLAlchemy 2.0, Alembic) with separate renderer and reranker services, shipped with Docker + Caddy.
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.12 cm}
+
+\datedentry{\textbf{Full-Stack Developer (Freelance)} — Repair-Pro: Multi-App Service Platform}{2025 -- Present}
+\vspace{0.1 cm}
+
+\begin{onecolentry}
+    \begin{highlights}
+        \item Delivered four apps on one ElysiaJS/Bun API --- admin, superadmin, LINE LIFF and an Expo mobile app --- with role-based access, PDF generation and push notifications.
+        \item Instrumented the backend with OpenTelemetry tracing and scheduled jobs; storage on PostgreSQL (Prisma) and S3.
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.12 cm}
+
+\datedentry{\textbf{Full-Stack Developer (Freelance)} — Medical Conference Registration \& Ordering System}{2025 -- Present}
+\vspace{0.1 cm}
+
+\begin{onecolentry}
+    \begin{highlights}
+        \item Built a LINE LIFF system for event registration, QR check-in and beverage ordering with real-time queue updates over Socket.IO.
+        \item Implemented an admin dashboard for order management and LINE notifications for order completion and near-queue alerts.
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.12 cm}
+
+\datedentry{\textbf{Full-Stack Developer (Part-Time)} — Membership \& Rewards System}{2025}
+\vspace{0.1 cm}
+
+\begin{onecolentry}
+    \begin{highlights}
+        \item Diagnosed and fixed critical production bugs in a LINE-based loyalty platform used in daily store operations.
+        \item Implemented POS bill cancellation workflow and promotion management; led a UI revamp improving usability and maintainability.
+    \end{highlights}
+\end{onecolentry}
+
+% ===== Projects =====
+\section{Projects}
+
+\datedentry{\textbf{Self-Hosted Infrastructure} — Personal Homelab}{2025 -- Present}
+\vspace{0.1 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Run my own deployment platform on Proxmox: Coolify PaaS with push-to-deploy CI/CD, exposed through a Cloudflare Tunnel with wildcard domains --- this resume's portfolio site is served from it.
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.12 cm}
+
+\datedentry{\textbf{Security System-as-a-Service for Communities} — Team Software Engineering Project (204361)}{2025}
+\vspace{0.1 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Designed system architecture (service separation, data flow, deployment) and managed DevOps with Docker Compose, Caddy and PostgreSQL.
+        \item Implemented authentication, event handling and third-party integrations; oversaw GitHub workflows and branching strategy for the team.
+    \end{highlights}
+\end{onecolentry}
+
+\end{document}
