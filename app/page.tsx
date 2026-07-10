@@ -204,23 +204,28 @@ export default function Home() {
 
       {/* contact */}
       <section aria-labelledby="contact-heading" className="pb-20 md:pb-28">
-        <h2 className="sect" id="contact-heading">
-          contact
-        </h2>
-        <p className="prompt mt-8">open --channel</p>
-        <div className="mt-6 flex flex-wrap gap-3 font-mono text-sm">
-          {channels.map((c) => (
-            <a
-              key={c.href}
-              className="tile !flex-row items-center gap-2 !py-3 text-[var(--text)]"
-              href={c.href}
-              {...(c.href.startsWith("http")
-                ? { target: "_blank", rel: "noreferrer" }
-                : {})}
-            >
-              <span className="signal">{c.icon}</span> {c.label}
-            </a>
-          ))}
+        <h2 className="sect" id="contact-heading">contact</h2>
+        <div className="palette-wrap">
+          <div className="palette">
+            <p className="palette-head">
+              <span className="signal">$</span> open --channel{" "}
+              <span className="signal palette-caret">█</span>
+            </p>
+            {channels.map((c) => (
+              <a
+                key={c.href}
+                className="palette-row"
+                href={c.href}
+                {...(c.href.startsWith("http")
+                  ? { target: "_blank", rel: "noreferrer" }
+                  : {})}
+              >
+                <span className="palette-ic">{c.icon}</span>
+                <span className="palette-label">{c.label}</span>
+                <span className="palette-enter">↵</span>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
