@@ -13,7 +13,7 @@ behind a Cloudflare Tunnel.
 - MathBookLM: AI math-learning platform — RAG over textbooks, quiz generation; Elysia/Bun + LangChain + Pinecone + RabbitMQ
 - Repair-Pro: 4 apps (admin/superadmin/LIFF/Expo) on one Bun API, PDF generation, OpenTelemetry
 - FDJ Logistics: LINE OA group manager + shipment tracking with AI intent analysis, Azure AD SSO
-- Plus 13 more systems listed on the site, and open-source work at https://github.com/NTCHz
+- Plus 13 more systems listed on [the site](https://portfolio.vlls.space), and open-source work on [GitHub](https://github.com/NTCHz)
 
 ## Skills
 
@@ -22,7 +22,7 @@ Next.js, Nuxt, Expo · PostgreSQL, Prisma, Drizzle · Docker, Proxmox, Coolify, 
 
 ## Contact
 
-- Email: nonnylnwzaza.1122@gmail.com
-- GitHub: https://github.com/NTCHz
-- LinkedIn: https://www.linkedin.com/in/thichanon-ratanasaenwan
-- Resume (PDF): https://portfolio.vlls.space/resume.pdf
+- [Email](mailto:nonnylnwzaza.1122@gmail.com): nonnylnwzaza.1122@gmail.com
+- [GitHub](https://github.com/NTCHz): open-source work, e.g. the off-by-none Claude Code skill
+- [LinkedIn](https://www.linkedin.com/in/thichanon-ratanasaenwan): professional profile
+- [Resume (PDF)](https://portfolio.vlls.space/resume.pdf): one-page resume
