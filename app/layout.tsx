@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Geist, Geist_Mono, Martian_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,10 +12,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const display = Instrument_Serif({
+const display = Martian_Mono({
   variable: "--font-display",
-  weight: "400",
-  style: ["normal", "italic"],
+  weight: ["700", "800"],
   subsets: ["latin"],
 });
 
