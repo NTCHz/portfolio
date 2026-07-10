@@ -52,7 +52,7 @@
 \pagenumbering{gobble}
 
 \titleformat{\section}{\needspace{3\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
-\titlespacing{\section}{-1pt}{0.3 cm}{0.2 cm}
+\titlespacing{\section}{-1pt}{0.22 cm}{0.15 cm}
 
 \renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
 
@@ -128,7 +128,7 @@
   \item \textbf{AI / LLM:} RAG pipelines, LangChain, Pinecone / pgvector, OCR, multi-provider LLM integration
   \item \textbf{Frontend:} Next.js, React, Nuxt/Vue, Expo (React Native), Tailwind CSS
   \item \textbf{Database \& Storage:} PostgreSQL, Prisma ORM, Drizzle ORM, MinIO / S3
-  \item \textbf{DevOps:} Docker, Docker Compose, Caddy/Traefik, GitHub Actions, Proxmox, Coolify, Cloudflare Tunnel
+  \item \textbf{DevOps:} Docker Compose, Caddy/Traefik, GitHub Actions, Proxmox, Coolify, Cloudflare Tunnel
   \item \textbf{Integrations:} LINE LIFF, LINE OA / Messaging API, Azure AD SSO
 \end{highlights}
 \end{onecolentry}
@@ -137,18 +137,17 @@
 % ===== Experience =====
 \section{Experience}
 
-\datedentry{\textbf{Full-Stack Developer (Freelance)} — MathBookLM: AI Mathematics Learning Platform (RAG)}{2025 -- Present}
+\datedentry{\textbf{Full-Stack Developer (Freelance)} — MathBookLM: AI Math Learning Platform}{2025 -- Present}
 \vspace{0.1 cm}
 
 \begin{onecolentry}
     \begin{highlights}
         \item Built a microservices RAG platform: chat over real textbooks, automated quiz generation and document summarization, using an ElysiaJS/Bun API and a FastAPI + LangChain agent with Pinecone retrieval and reranking.
-        \item Designed an async job pipeline with RabbitMQ workers, Redis rate-limiting and SSE status updates for PDF/OCR processing at scale.
-        \item Operate the full Docker Compose deployment: PostgreSQL, Redis, RabbitMQ, MinIO and Prometheus monitoring.
+        \item Designed an async job pipeline (RabbitMQ workers, Redis rate-limiting, SSE status) and operate the full Docker Compose deployment with PostgreSQL, MinIO and Prometheus.
     \end{highlights}
 \end{onecolentry}
 
-\vspace{0.12 cm}
+\vspace{0.08 cm}
 
 \datedentry{\textbf{Full-Stack Developer (Freelance)} — CorpAi: Multi-Provider LLM Chat Platform}{2025}
 \vspace{0.1 cm}
@@ -156,11 +155,11 @@
 \begin{onecolentry}
     \begin{highlights}
         \item Built a ChatGPT-style chat platform with a pluggable provider layer supporting OpenAI, Anthropic and Gemini behind one abstraction, with auth and chat history.
-        \item Architected a Next.js BFF over an async FastAPI backend (SQLAlchemy 2.0, Alembic) with separate renderer and reranker services, shipped with Docker + Caddy.
+        \item Architected a Next.js BFF over an async FastAPI backend with separate renderer and reranker services, shipped with Docker + Caddy.
     \end{highlights}
 \end{onecolentry}
 
-\vspace{0.12 cm}
+\vspace{0.08 cm}
 
 \datedentry{\textbf{Full-Stack Developer (Freelance)} — Repair-Pro: Multi-App Service Platform}{2025 -- Present}
 \vspace{0.1 cm}
@@ -172,7 +171,7 @@
     \end{highlights}
 \end{onecolentry}
 
-\vspace{0.12 cm}
+\vspace{0.08 cm}
 
 \datedentry{\textbf{Full-Stack Developer (Freelance)} — Medical Conference Registration \& Ordering System}{2025 -- Present}
 \vspace{0.1 cm}
@@ -184,7 +183,7 @@
     \end{highlights}
 \end{onecolentry}
 
-\vspace{0.12 cm}
+\vspace{0.08 cm}
 
 \datedentry{\textbf{Full-Stack Developer (Part-Time)} — Membership \& Rewards System}{2025}
 \vspace{0.1 cm}
@@ -207,14 +206,13 @@
     \end{highlights}
 \end{onecolentry}
 
-\vspace{0.12 cm}
+\vspace{0.08 cm}
 
 \datedentry{\textbf{Security System-as-a-Service for Communities} — Team Software Engineering Project (204361)}{2025}
 \vspace{0.1 cm}
 \begin{onecolentry}
     \begin{highlights}
-        \item Designed system architecture (service separation, data flow, deployment) and managed DevOps with Docker Compose, Caddy and PostgreSQL.
-        \item Implemented authentication, event handling and third-party integrations; oversaw GitHub workflows and branching strategy for the team.
+        \item Designed the system architecture and DevOps (Docker Compose, Caddy, PostgreSQL); implemented auth, event handling and integrations; oversaw the team's GitHub workflow.
     \end{highlights}
 \end{onecolentry}
 
