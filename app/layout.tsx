@@ -29,7 +29,7 @@ export const metadata: Metadata = {
       "AI/RAG systems, LINE-platform apps, and self-hosted infrastructure.",
     url: "https://portfolio.vlls.space",
     type: "website",
-    images: [{ url: "/og.png", width: 2400, height: 1260 }],
+    images: [{ url: "/og.png", width: 1400, height: 735 }],
   },
   twitter: {
     card: "summary_large_image",
