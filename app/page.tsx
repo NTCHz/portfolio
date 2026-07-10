@@ -3,6 +3,23 @@ import { projects, type Project } from "@/data/projects";
 const EMAIL = "nonnylnwzaza.1122@gmail.com";
 const GITHUB = "https://github.com/NTCHz";
 
+const channels: { label: string; href: string; icon: string }[] = [
+  { label: EMAIL, href: `mailto:${EMAIL}`, icon: "✉" },
+  { label: "github.com/NTCHz", href: GITHUB, icon: "⌥" },
+  { label: "LINE", href: "https://line.me/ti/p/H49KQVfR_S", icon: "◉" },
+  {
+    label: "linkedin/thichanon-ratanasaenwan",
+    href: "https://www.linkedin.com/in/thichanon-ratanasaenwan",
+    icon: "in",
+  },
+  {
+    label: "facebook",
+    href: "https://www.facebook.com/Thichanon.Ratanasaenwan/",
+    icon: "f",
+  },
+  { label: "instagram @ntchz.rw", href: "https://instagram.com/ntchz.rw", icon: "◌" },
+];
+
 const skills: { group: string; items: string }[] = [
   {
     group: "AI / Backend",
@@ -192,20 +209,18 @@ export default function Home() {
         </h2>
         <p className="prompt mt-8">open --channel</p>
         <div className="mt-6 flex flex-wrap gap-3 font-mono text-sm">
-          <a
-            className="tile !flex-row items-center gap-2 !py-3 text-[var(--text)]"
-            href={`mailto:${EMAIL}`}
-          >
-            <span className="signal">✉</span> {EMAIL}
-          </a>
-          <a
-            className="tile !flex-row items-center gap-2 !py-3 text-[var(--text)]"
-            href={GITHUB}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span className="signal">⌥</span> github.com/NTCHz ↗
-          </a>
+          {channels.map((c) => (
+            <a
+              key={c.href}
+              className="tile !flex-row items-center gap-2 !py-3 text-[var(--text)]"
+              href={c.href}
+              {...(c.href.startsWith("http")
+                ? { target: "_blank", rel: "noreferrer" }
+                : {})}
+            >
+              <span className="signal">{c.icon}</span> {c.label}
+            </a>
+          ))}
         </div>
       </section>
 
