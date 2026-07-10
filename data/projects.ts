@@ -13,8 +13,8 @@ export type Project = {
 // Descriptions & stacks sourced from the actual local repos.
 export const projects: Project[] = [
   {
-    slug: 'corpai',
-    name: 'CorpAi',
+    slug: 'multi-llm-chat',
+    name: 'Multi-LLM Chat Platform',
     description:
       'ChatGPT-style chat platform with a pluggable provider layer (OpenAI / Anthropic / Gemini), auth and chat history. Next.js BFF over an async FastAPI backend, shipped with Docker + Caddy.',
     tech: ['Next.js', 'FastAPI', 'PostgreSQL', 'Docker'],
@@ -22,8 +22,8 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: 'mathbooklm',
-    name: 'MathBookLM',
+    slug: 'smartmath',
+    name: 'SmartMath',
     description:
       'AI math-learning platform: RAG chat over real textbooks, auto quiz generation and summaries. RabbitMQ job pipeline, Redis rate-limiting, Pinecone retrieval + rerank.',
     tech: ['Elysia · Bun', 'LangChain', 'Pinecone', 'RabbitMQ', 'MinIO'],
@@ -31,48 +31,48 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: 'repair-pro',
-    name: 'Repair-Pro',
+    slug: 'repair-platform',
+    name: 'Repair Service Platform',
     description:
-      'Repair-job platform in four apps — admin, superadmin, LIFF, Expo mobile — with PDF generation, push notifications and OpenTelemetry tracing.',
+      'Repair-job platform for a service company in four apps — admin, superadmin, LIFF, Expo mobile — with PDF generation, push notifications and OpenTelemetry tracing.',
     tech: ['Elysia · Bun', 'Prisma', 'Expo', 'LINE LIFF'],
     proof: '4 apps on one Bun API — admin · superadmin · LIFF · Expo mobile',
     featured: true,
   },
   {
-    slug: 'fdj-logistics',
-    name: 'FDJ Logistics',
+    slug: 'logistics-line-oa',
+    name: 'Logistics LINE OA Manager',
     description:
-      'LINE OA group manager + shipment tracking: automated mention replies, broadcasts, product carousels, AI intent analysis, Azure AD login.',
+      'LINE OA group manager + shipment tracking for a Thai logistics company: automated mention replies, broadcasts, product carousels, AI intent analysis, Azure AD login.',
     tech: ['Next.js', 'LINE Bot SDK', 'OpenAI', 'Prisma'],
     proof: 'AI intent analysis + human review loop · Azure AD SSO',
     featured: true,
   },
   {
-    slug: 'langhorpak',
-    name: 'LangHorpak',
+    slug: 'dorm-suite',
+    name: 'Dormitory Management Suite',
     description:
-      'Dormitory management — rooms, tenants, billing. OCR meter readings with Tesseract, server-rendered receipt images via Satori.',
+      'Dormitory operations for a housing operator — rooms, tenants, billing. OCR meter readings with Tesseract, server-rendered receipt images via Satori.',
     tech: ['Elysia · Bun', 'Prisma', 'Tesseract OCR', 'LIFF'],
   },
   {
-    slug: 'resonac-app',
-    name: 'Resonac App',
+    slug: 'field-ops',
+    name: 'Field Ops Platform',
     description:
-      'Real-time chat + push notifications across Expo mobile, admin dashboard and a Socket.IO API.',
+      'Real-time chat + push notifications for a manufacturing team — Expo mobile, admin dashboard and a Socket.IO API.',
     tech: ['Express', 'MongoDB', 'Socket.IO', 'Expo'],
   },
   {
-    slug: 'water-center-77',
-    name: 'Water Center 77',
+    slug: 'loyalty-liff',
+    name: 'Loyalty & Rewards LIFF',
     description:
-      'LINE-based loyalty & rewards platform for a water refill business — points, presigned S3 uploads.',
+      'LINE-based loyalty & rewards platform for a local retail business — points, presigned S3 uploads.',
     tech: ['Next.js', 'Prisma', 'LINE LIFF', 'S3'],
   },
   {
-    slug: 'prime-fit',
-    name: 'Prime FIT',
-    description: 'Fitness brand platform & landing with GSAP motion and AI image upscaling.',
+    slug: 'fitness-landing',
+    name: 'Fitness Brand Platform',
+    description: 'Brand platform & landing for a fitness studio with GSAP motion and AI image upscaling.',
     tech: ['Next.js', 'GSAP', 'Tailwind'],
   },
   {
@@ -115,9 +115,9 @@ export const projects: Project[] = [
     tech: ['Next.js', 'Drizzle', 'Neon', 'LINE LIFF'],
   },
   {
-    slug: 'langhorpak-crm',
-    name: 'LangHorpak CRM',
-    description: 'Housing sales & customer CRM dashboard for the LangHorpak system.',
+    slug: 'dorm-crm',
+    name: 'Dormitory Suite CRM',
+    description: 'Sales & customer CRM dashboard for the dormitory management suite.',
     tech: ['Next.js', 'React 19', 'Tailwind'],
   },
   {

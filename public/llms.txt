@@ -9,10 +9,10 @@ behind a Cloudflare Tunnel.
 
 ## Flagship systems (mostly private client/org repos)
 
-- CorpAi: ChatGPT-style multi-provider LLM chat (OpenAI/Anthropic/Gemini) — Next.js BFF + async FastAPI + PostgreSQL
-- MathBookLM: AI math-learning platform — RAG over textbooks, quiz generation; Elysia/Bun + LangChain + Pinecone + RabbitMQ
-- Repair-Pro: 4 apps (admin/superadmin/LIFF/Expo) on one Bun API, PDF generation, OpenTelemetry
-- FDJ Logistics: LINE OA group manager + shipment tracking with AI intent analysis, Azure AD SSO
+- Multi-LLM Chat Platform: ChatGPT-style multi-provider LLM chat (OpenAI/Anthropic/Gemini) — Next.js BFF + async FastAPI + PostgreSQL
+- SmartMath: AI math-learning platform — RAG over textbooks, quiz generation; Elysia/Bun + LangChain + Pinecone + RabbitMQ
+- Repair Service Platform: 4 apps (admin/superadmin/LIFF/Expo) on one Bun API, PDF generation, OpenTelemetry
+- Logistics LINE OA Manager: LINE OA group manager + shipment tracking with AI intent analysis, Azure AD SSO (Thai logistics client)
 - Plus 13 more systems listed on [the site](https://portfolio.vlls.space), and open-source work on [GitHub](https://github.com/NTCHz)
 
 ## Skills

@@ -44,9 +44,9 @@ function Flow({ d, red }: { d: string; red?: boolean }) {
   return <path className={red ? "flow red" : "flow"} d={d} pathLength={1} />;
 }
 
-export function CorpAiDiagram() {
+export function MultiLlmChatDiagram() {
   return (
-    <svg className="diagram" viewBox="0 0 560 150" role="img" aria-label="CorpAi architecture">
+    <svg className="diagram" viewBox="0 0 560 150" role="img" aria-label="Multi-LLM Chat Platform architecture">
       <Box x={8} y={55} w={90} h={40} label="Next.js" sub="BFF" />
       <Box x={160} y={55} w={100} h={40} label="FastAPI" sub="async" />
       <Box x={322} y={8} w={110} h={34} label="Renderer" />
@@ -62,9 +62,9 @@ export function CorpAiDiagram() {
   );
 }
 
-export function MathBookDiagram() {
+export function SmartMathDiagram() {
   return (
-    <svg className="diagram" viewBox="0 0 560 150" role="img" aria-label="MathBookLM architecture">
+    <svg className="diagram" viewBox="0 0 560 150" role="img" aria-label="SmartMath architecture">
       <Box x={8} y={55} w={90} h={40} label="Next.js" sub="app+admin" />
       <Box x={150} y={55} w={100} h={40} label="Elysia" sub="bun api" />
       <Box x={300} y={8} w={100} h={34} label="RabbitMQ" sub="workers" red />
@@ -80,9 +80,9 @@ export function MathBookDiagram() {
   );
 }
 
-export function RepairProDiagram() {
+export function RepairPlatformDiagram() {
   return (
-    <svg className="diagram" viewBox="0 0 560 150" role="img" aria-label="Repair-Pro architecture">
+    <svg className="diagram" viewBox="0 0 560 150" role="img" aria-label="Repair Service Platform architecture">
       <Box x={8} y={8} w={96} h={28} label="Admin" />
       <Box x={8} y={44} w={96} h={28} label="Superadmin" />
       <Box x={8} y={80} w={96} h={28} label="LIFF" />
@@ -102,9 +102,9 @@ export function RepairProDiagram() {
   );
 }
 
-export function FdjDiagram() {
+export function LogisticsOaDiagram() {
   return (
-    <svg className="diagram" viewBox="0 0 560 150" role="img" aria-label="FDJ Logistics architecture">
+    <svg className="diagram" viewBox="0 0 560 150" role="img" aria-label="Logistics LINE OA Manager architecture">
       <Box x={8} y={55} w={90} h={40} label="LINE OA" sub="webhook" />
       <Box x={150} y={55} w={110} h={40} label="Next.js" sub="bot + admin" />
       <Box x={312} y={8} w={110} h={34} label="OpenAI" sub="intent" red />
@@ -121,8 +121,8 @@ export function FdjDiagram() {
 }
 
 export const diagramBySlug: Record<string, () => React.JSX.Element> = {
-  corpai: CorpAiDiagram,
-  mathbooklm: MathBookDiagram,
-  "repair-pro": RepairProDiagram,
-  "fdj-logistics": FdjDiagram,
+  "multi-llm-chat": MultiLlmChatDiagram,
+  smartmath: SmartMathDiagram,
+  "repair-platform": RepairPlatformDiagram,
+  "logistics-line-oa": LogisticsOaDiagram,
 };
