@@ -1,79 +1,52 @@
 import { projects, type Project } from "@/data/projects";
+import { diagramBySlug } from "@/components/diagrams";
+import { Reveal } from "@/components/reveal";
 
 const EMAIL = "nonnylnwzaza.1122@gmail.com";
 const GITHUB = "https://github.com/NTCHz";
 
-const channels: { label: string; href: string; icon: string }[] = [
-  { label: EMAIL, href: `mailto:${EMAIL}`, icon: "✉" },
-  { label: "github.com/NTCHz", href: GITHUB, icon: "⌥" },
-  { label: "LINE", href: "https://line.me/ti/p/H49KQVfR_S", icon: "◉" },
-  {
-    label: "linkedin/thichanon-ratanasaenwan",
-    href: "https://www.linkedin.com/in/thichanon-ratanasaenwan",
-    icon: "in",
-  },
-  {
-    label: "facebook",
-    href: "https://www.facebook.com/Thichanon.Ratanasaenwan/",
-    icon: "f",
-  },
-  { label: "instagram @ntchz.rw", href: "https://instagram.com/ntchz.rw", icon: "◌" },
+const links: { label: string; href: string }[] = [
+  { label: "GitHub", href: GITHUB },
+  { label: "LINE", href: "https://line.me/ti/p/H49KQVfR_S" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/thichanon-ratanasaenwan" },
+  { label: "Facebook", href: "https://www.facebook.com/Thichanon.Ratanasaenwan/" },
+  { label: "Instagram", href: "https://instagram.com/ntchz.rw" },
 ];
+
+const marquee =
+  "Full-stack developer \u2726 AI / RAG \u2726 LINE platform \u2726 Self-hosted infra \u2726 17 systems shipped \u2726 ";
 
 const skills: { group: string; items: string }[] = [
   {
     group: "AI / Backend",
-    items:
-      "RAG · LLM pipelines · OCR · Elysia + Bun · FastAPI · Express · Prisma / Drizzle",
+    items: "RAG · LLM pipelines · OCR · Elysia + Bun · FastAPI · Express · Prisma / Drizzle",
   },
   { group: "Frontend", items: "Next.js · Nuxt / Vue · Expo · Tailwind" },
-  {
-    group: "LINE Platform",
-    items: "LIFF · LINE OA bots · messaging automation",
-  },
-  {
-    group: "Infra",
-    items: "Docker · Proxmox · Coolify · Cloudflare · self-hosted CI/CD",
-  },
+  { group: "LINE Platform", items: "LIFF · LINE OA bots · messaging automation" },
+  { group: "Infra", items: "Docker · Proxmox · Coolify · Cloudflare · self-hosted CI/CD" },
 ];
 
-function Tile({ project, big }: { project: Project; big?: boolean }) {
-  const body = (
-    <>
-      <p className="tile-path">systems/{project.slug}</p>
-      <h3
-        className={`font-display mt-3 text-[var(--bright)] ${
-          big ? "text-2xl md:text-3xl" : "text-base md:text-lg"
-        }`}
-      >
-        {project.name}
-        {project.github && <span className="signal text-xs align-super"> ↗</span>}
-      </h3>
-      <p
-        className={`mt-2 leading-relaxed text-[var(--dim)] ${
-          big ? "text-sm max-w-md" : "text-xs"
-        }`}
-      >
-        {project.description}
-      </p>
-      {project.proof && <p className="proof">{project.proof}</p>}
-      <ul className="mt-auto pt-4 flex flex-wrap gap-1.5">
-        {project.tech.map((t) => (
-          <li key={t} className="tag">
-            {t}
-          </li>
-        ))}
-      </ul>
-    </>
-  );
-
-  const span = big ? "min-h-52" : "";
-  return project.github ? (
-    <a href={project.github} target="_blank" rel="noreferrer" className={`tile ${span}`}>
-      {body}
-    </a>
-  ) : (
-    <div className={`tile ${span}`}>{body}</div>
+function Work({ project, index }: { project: Project; index: number }) {
+  const Diagram = diagramBySlug[project.slug];
+  return (
+    <Reveal>
+      <article className="work">
+        <p className="work-no">/{String(index + 1).padStart(2, "0")}</p>
+        <div className="mt-3 grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-end">
+          <h3 className="work-title">{project.name}</h3>
+          <div>
+            <p className="work-desc">{project.description}</p>
+            {project.proof && <p className="work-proof mt-4">{project.proof}</p>}
+            <p className="work-tech mt-4">{project.tech.join(" / ")}</p>
+          </div>
+        </div>
+        {Diagram && (
+          <div className="mt-8 overflow-x-auto">
+            <Diagram />
+          </div>
+        )}
+      </article>
+    </Reveal>
   );
 }
 
@@ -83,152 +56,144 @@ export default function Home() {
 
   return (
     <>
-      <header className="site-nav">
-        <span className="text-[var(--dim)]">
-          <span className="signal">~/</span>nont
+      <header className="nav">
+        <span>Nont — Thichanon R.</span>
+        <span className="hidden sm:inline">
+          <span className="dot-live" />
+          Available for work
         </span>
-        <nav className="flex gap-5" aria-label="Main navigation">
-          <a href={GITHUB} target="_blank" rel="noreferrer">github</a>
-          <a href={`mailto:${EMAIL}`}>contact ↗</a>
-        </nav>
+        <a href={`mailto:${EMAIL}`}>Contact ↗</a>
       </header>
-      <main className="mx-auto w-full max-w-6xl px-6 md:px-10">
-      {/* hero */}
-      <section
-        aria-labelledby="hero-heading"
-        className="pt-24 md:pt-32 pb-20 md:pb-28"
-      >
-        <p className="prompt cursor rise">whoami</p>
-        <h1
-          id="hero-heading"
-          className="font-display rise rise-2 mt-6 uppercase leading-[1.08] text-[var(--bright)]"
-          style={{
-            fontSize: "clamp(1.9rem, 0.6rem + 4.6vw, 4.2rem)",
-            letterSpacing: "-0.02em",
-          }}
-        >
-          Thichanon
-          <br />
-          <span className="glow-text signal">Ratanasaenwan</span>
-        </h1>
-        <div className="mt-10 grid gap-8 md:grid-cols-[1.15fr_1fr] md:items-start">
-          <p className="rise rise-3 max-w-md text-base leading-relaxed">
-            Full-stack developer. I build production systems end to end — RAG/LLM
-            backends, LINE-native apps, and the DevOps that keeps them running.
-            Research projects at Chiang Mai University.
-            <span className="mt-3 block font-mono text-xs text-[var(--dim)]">
-              รับพัฒนาระบบครบวงจร — LINE OA / LIFF · ระบบหลังบ้าน · AI — คุยไทยได้
-            </span>
-          </p>
-          <dl className="manifest rise rise-4" aria-label="How this site is served">
-            <div>
-              <dt className="inline">host&nbsp;&nbsp;&nbsp;&nbsp;</dt>
-              <dd className="inline"><b>proxmox → coolify</b></dd>
-            </div>
-            <div>
-              <dt className="inline">edge&nbsp;&nbsp;&nbsp;&nbsp;</dt>
-              <dd className="inline"><b>cloudflare tunnel</b></dd>
-            </div>
-            <div>
-              <dt className="inline">stack&nbsp;&nbsp;&nbsp;</dt>
-              <dd className="inline"><b>next.js · typescript</b></dd>
-            </div>
-            <div>
-              <dt className="inline">status&nbsp;&nbsp;</dt>
-              <dd className="inline">
-                <span className="ok">● self-hosted from my homelab</span>
-              </dd>
-            </div>
-          </dl>
-        </div>
-      </section>
 
-      {/* systems */}
-      <section aria-labelledby="work-heading" className="pb-20 md:pb-28">
-        <h2 className="sect" id="work-heading">
-          systems
-        </h2>
-        <p className="mt-4 mb-8 font-mono text-xs text-[var(--dim)]">
-          17 shipped systems — mostly private client &amp; org repos. Happy to
-          walk through any of them in an interview.
-        </p>
-        <div className="grid gap-3 md:grid-cols-2">
-          {featured.map((p) => (
-            <Tile key={p.slug} project={p} big />
-          ))}
+      <main>
+        {/* hero */}
+        <section aria-labelledby="hero-heading" className="mx-auto w-full max-w-6xl px-6 md:px-10 pt-32 md:pt-40 pb-10">
+          <h1 id="hero-heading" className="mega" style={{ fontSize: "clamp(3.4rem, 12.5vw, 10rem)" }}>
+            <span className="hero-line">
+              <span>Thichanon</span>
+            </span>
+            <span className="hero-line">
+              <span>
+                Ratanasaenwan<span style={{ color: "var(--accent)" }}>.</span>
+              </span>
+            </span>
+          </h1>
+          <div className="rise rise-2 mt-8">
+            <p className="max-w-md text-base md:text-lg leading-relaxed text-[var(--muted)]">
+              Full-stack developer building production systems end to end —
+              RAG/LLM backends, LINE-native apps, and the DevOps that keeps them
+              running.
+            </p>
+            <p className="meta mt-6">
+              Chiang Mai, TH · Self-hosted on my own homelab
+            </p>
+          </div>
+        </section>
+
+        {/* marquee */}
+        <div className="marquee mx-auto w-full max-w-6xl mt-8" aria-hidden>
+          <div className="marquee-track">
+            <span>{marquee}</span>
+            <span>{marquee}</span>
+          </div>
         </div>
-        <p className="mt-12 mb-4 font-mono text-xs text-[var(--dim)]">
-          + {rest.length} more systems — ask me about any of them
-        </p>
-        <div>
-          {rest.map((p) => (
-            <div key={p.slug} className="sys-row">
-              <span className="sys-name">
-                {p.github ? (
-                  <a href={p.github} target="_blank" rel="noreferrer" className="hover:text-[var(--signal)]">
-                    {p.name} <span className="signal">↗</span>
+
+        {/* featured works */}
+        <section aria-labelledby="work-heading" className="mx-auto w-full max-w-6xl px-6 md:px-10 pt-24 md:pt-32 pb-16">
+          <Reveal>
+            <div className="flex items-baseline justify-between">
+              <h2 className="meta" id="work-heading">
+                Selected systems
+              </h2>
+              <span className="meta">2023 — 2026</span>
+            </div>
+          </Reveal>
+          <div className="mt-10">
+            {featured.map((p, i) => (
+              <Work key={p.slug} project={p} index={i} />
+            ))}
+          </div>
+        </section>
+
+        {/* archive */}
+        <section aria-labelledby="archive-heading" className="mx-auto w-full max-w-6xl px-6 md:px-10 pb-24 md:pb-32">
+          <Reveal>
+            <h2 className="meta" id="archive-heading">
+              Archive — {rest.length} more systems
+            </h2>
+          </Reveal>
+          <Reveal delay={80}>
+            <div className="mt-8">
+              {rest.map((p, i) => {
+                const inner = (
+                  <>
+                    <span className="a-no">{String(i + 5).padStart(2, "0")}</span>
+                    <span className="a-name">
+                      {p.name}
+                      {p.github ? " ↗" : ""}
+                    </span>
+                    <span className="a-desc">{p.description}</span>
+                    <span className="a-tech">{p.tech.slice(0, 3).join(" · ")}</span>
+                  </>
+                );
+                return p.github ? (
+                  <a key={p.slug} className="arow" href={p.github} target="_blank" rel="noreferrer">
+                    {inner}
                   </a>
                 ) : (
-                  p.name
-                )}
-              </span>
-              <span className="sys-desc">{p.description}</span>
-              <span className="sys-tags">{p.tech.slice(0, 3).join(" · ")}</span>
+                  <div key={p.slug} className="arow">
+                    {inner}
+                  </div>
+                );
+              })}
             </div>
-          ))}
-        </div>
-      </section>
+          </Reveal>
+        </section>
 
-      {/* operator */}
-      <section aria-labelledby="about-heading" className="pb-20 md:pb-28">
-        <h2 className="sect" id="about-heading">
-          operator
-        </h2>
-        <p className="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed text-[var(--bright)]">
-          One repo or twelve — I&apos;m comfortable running multi-service
-          systems, and I build my own dev tooling along the way.
-        </p>
-        <dl className="mt-10 grid gap-3 sm:grid-cols-2">
-          {skills.map((s) => (
-            <div key={s.group} className="tile">
-              <dt className="font-display text-xs uppercase tracking-widest signal">
-                {s.group}
-              </dt>
-              <dd className="mt-2 text-sm leading-relaxed text-[var(--dim)]">
-                {s.items}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </section>
+        {/* statement + skills */}
+        <section aria-labelledby="about-heading" className="mx-auto w-full max-w-6xl px-6 md:px-10 pb-24 md:pb-32">
+          <Reveal>
+            <p className="statement max-w-4xl" id="about-heading">
+              One repo or twelve — comfortable running <em>multi-service</em>{" "}
+              systems, building my own <em>dev tooling</em> along the way.
+            </p>
+          </Reveal>
+          <dl className="mt-14 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+            {skills.map((s, i) => (
+              <Reveal key={s.group} delay={i * 80}>
+                <div className="skill-col">
+                  <dt>{s.group}</dt>
+                  <dd>{s.items}</dd>
+                </div>
+              </Reveal>
+            ))}
+          </dl>
+        </section>
 
-      {/* contact */}
-      <section aria-labelledby="contact-heading" className="pb-20 md:pb-28">
-        <h2 className="sect" id="contact-heading">
-          contact
-        </h2>
-        <p className="prompt mt-8">open --channel</p>
-        <div className="mt-6 flex flex-wrap gap-3 font-mono text-sm">
-          {channels.map((c) => (
-            <a
-              key={c.href}
-              className="tile !flex-row items-center gap-2 !py-3 text-[var(--text)]"
-              href={c.href}
-              {...(c.href.startsWith("http")
-                ? { target: "_blank", rel: "noreferrer" }
-                : {})}
-            >
-              <span className="signal">{c.icon}</span> {c.label}
+        {/* footer */}
+        <footer className="mx-auto w-full max-w-6xl px-6 md:px-10 pb-12">
+          <Reveal>
+            <p className="meta">Have a system to build?</p>
+            <a className="talk mt-4" href={`mailto:${EMAIL}`}>
+              Let&apos;s talk
+              <span style={{ color: "var(--accent)" }}>.</span>
             </a>
-          ))}
-        </div>
-      </section>
-
-      <footer className="border-t border-[var(--line)] py-8 font-mono text-xs text-[var(--dim)]">
-        © {new Date().getFullYear()} thichanon ratanasaenwan · served from a
-        proxmox box via cloudflare tunnel
-      </footer>
-    </main>
+          </Reveal>
+          <div className="mt-12 flex flex-wrap items-end justify-between gap-6">
+            <nav className="foot-links" aria-label="Social links">
+              {links.map((l) => (
+                <a key={l.href} href={l.href} target="_blank" rel="noreferrer">
+                  {l.label}
+                </a>
+              ))}
+              <a href={`mailto:${EMAIL}`}>Email</a>
+            </nav>
+            <p className="meta">
+              © {new Date().getFullYear()} · Self-hosted via Proxmox + Cloudflare tunnel
+            </p>
+          </div>
+        </footer>
+      </main>
     </>
   );
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Martian_Mono } from "next/font/google";
+import { Anton, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,9 +12,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const display = Martian_Mono({
+const display = Anton({
   variable: "--font-display",
-  weight: ["700", "800"],
+  weight: "400",
   subsets: ["latin"],
 });
 
