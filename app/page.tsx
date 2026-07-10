@@ -162,16 +162,16 @@ export default function Home() {
               systems, building my own <em>dev tooling</em> along the way.
             </p>
           </Reveal>
-          <dl className="mt-14 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {skills.map((s, i) => (
               <Reveal key={s.group} delay={i * 80}>
                 <div className="skill-col">
-                  <dt>{s.group}</dt>
-                  <dd>{s.items}</dd>
+                  <h3 className="skill-title">{s.group}</h3>
+                  <p className="skill-desc">{s.items}</p>
                 </div>
               </Reveal>
             ))}
-          </dl>
+          </div>
         </section>
 
         {/* footer */}
