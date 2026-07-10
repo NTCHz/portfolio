@@ -68,7 +68,7 @@ export default function Home() {
       <main>
         {/* hero */}
         <section aria-labelledby="hero-heading" className="mx-auto w-full max-w-6xl px-6 md:px-10 pt-32 md:pt-40 pb-10">
-          <h1 id="hero-heading" className="mega" style={{ fontSize: "clamp(3.4rem, 12.5vw, 10rem)" }}>
+          <h1 id="hero-heading" className="mega" style={{ fontSize: "clamp(1.8rem, 10.5vw, 10rem)" }}>
             <span className="hero-line">
               <span>Thichanon</span>
             </span>
