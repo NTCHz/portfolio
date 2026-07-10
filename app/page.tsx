@@ -62,7 +62,11 @@ export default function Home() {
           <span className="dot-live" />
           Available for work
         </span>
-        <a href={`mailto:${EMAIL}`}>Contact ↗</a>
+        <span>
+          <a href="/resume.pdf" target="_blank" rel="noreferrer">Resume ↓</a>
+          {"  ·  "}
+          <a href={`mailto:${EMAIL}`}>Contact ↗</a>
+        </span>
       </header>
 
       <main>
@@ -187,6 +191,7 @@ export default function Home() {
                 </a>
               ))}
               <a href={`mailto:${EMAIL}`}>Email</a>
+              <a href="/resume.pdf" target="_blank" rel="noreferrer">Resume</a>
             </nav>
             <p className="meta">
               © {new Date().getFullYear()} · Self-hosted via Proxmox + Cloudflare tunnel
