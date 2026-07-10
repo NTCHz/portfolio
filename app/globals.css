@@ -1,26 +1,124 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --ink: #0a0d12;
+  --panel: #11161f;
+  --line: #1e2530;
+  --paper: #e8e4da;
+  --muted: #8a9099;
+  --signal: #00e5ff;
+  --amber: #e8a849;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --text-hero: clamp(2.6rem, 1rem + 7vw, 6.5rem);
+  --text-title: clamp(1.4rem, 1rem + 1.6vw, 2.2rem);
+  --space-section: clamp(5rem, 3rem + 6vw, 9rem);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--signal);
+  color: var(--ink);
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+.font-mono {
+  font-family: var(--font-geist-mono), monospace;
+}
+
+/* mono eyebrow label */
+.eyebrow {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.eyebrow::before {
+  content: "// ";
+  color: var(--signal);
+}
+
+/* hero load stagger */
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: rise 0.9s var(--ease-out) forwards;
+  }
+  .rise-2 { animation-delay: 0.12s; }
+  .rise-3 { animation-delay: 0.24s; }
+  .rise-4 { animation-delay: 0.4s; }
+  @keyframes rise {
+    to { opacity: 1; transform: none; }
+  }
+}
+
+/* project index row */
+.project-row {
+  display: block;
+  border-top: 1px solid var(--line);
+  padding: 2rem 0.5rem;
+  transition: background 0.3s var(--ease-out), padding-left 0.3s var(--ease-out);
+}
+.project-row:last-of-type {
+  border-bottom: 1px solid var(--line);
+}
+.project-row:hover,
+.project-row:focus-visible {
+  background: var(--panel);
+  padding-left: 1.25rem;
+}
+.project-row .title-line {
+  background-image: linear-gradient(var(--signal), var(--signal));
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.4s var(--ease-out);
+  padding-bottom: 4px;
+}
+.project-row:hover .title-line,
+.project-row:focus-visible .title-line {
+  background-size: 100% 2px;
+}
+
+a:focus-visible,
+.project-row:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+}
+
+.tag {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 0.2rem 0.55rem;
+  border-radius: 2px;
+}
+
+.manifest {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.75rem;
+  line-height: 2;
+  color: var(--muted);
+  border-left: 1px solid var(--line);
+  padding-left: 1.25rem;
+}
+.manifest b {
+  color: var(--paper);
+  font-weight: 400;
+}
+.manifest .ok {
+  color: var(--amber);
 }
