@@ -3,6 +3,7 @@ export type Project = {
   name: string
   description: string
   tech: string[]
+  role?: string
   proof?: string
   github?: string
   live?: string
@@ -23,6 +24,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'smartmath',
+    role: 'Full-stack developer — team project',
     name: 'SmartMath',
     description:
       'AI math-learning platform: RAG chat over real textbooks, auto quiz generation and summaries. RabbitMQ job pipeline, Redis rate-limiting, Pinecone retrieval + rerank.',
@@ -109,6 +111,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'vein-analysis',
+    role: 'Full-stack developer — team project',
     name: 'Nurse / Vein Analysis',
     description:
       'Nursing-research tool for IV-site assessment — structured scoring with clinical flags, dashboards, Excel export, LIFF access.',
@@ -122,6 +125,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'dukpyra',
+    role: 'Full-stack developer — team project',
     name: 'Dukpyra',
     description:
       'A web framework where you write Python and it runs on .NET — own compiler, CLI and dev server.',

@@ -457,3 +457,20 @@ a:focus-visible {
     font-size: 12px;
   }
 }
+
+.a-team {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  padding: 0.05rem 0.35rem;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+.arow:hover .a-team {
+  color: #0c0c0c;
+  border-color: #0c0c0c;
+}

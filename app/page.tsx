@@ -37,7 +37,10 @@ function Work({ project, index }: { project: Project; index: number }) {
           <div>
             <p className="work-desc">{project.description}</p>
             {project.proof && <p className="work-proof mt-4">{project.proof}</p>}
-            <p className="work-tech mt-4">{project.tech.join(" / ")}</p>
+            <p className="work-tech mt-4">
+              {(project.role ?? "Solo full-stack — design, build, deploy").toUpperCase()}
+            </p>
+            <p className="work-tech mt-1">{project.tech.join(" / ")}</p>
           </div>
         </div>
         {Diagram && (
@@ -123,7 +126,7 @@ export default function Home() {
         <section aria-labelledby="archive-heading" className="mx-auto w-full max-w-6xl px-6 md:px-10 pb-24 md:pb-32">
           <Reveal>
             <h2 className="meta" id="archive-heading">
-              Archive — {rest.length} more systems
+              Archive — {rest.length} more systems · solo full-stack unless noted
             </h2>
           </Reveal>
           <Reveal delay={80}>
@@ -135,6 +138,9 @@ export default function Home() {
                     <span className="a-name">
                       {p.name}
                       {p.github ? " ↗︎" : ""}
+                      {p.role?.includes("team") && (
+                        <span className="a-team"> team</span>
+                      )}
                     </span>
                     <span className="a-desc">{p.description}</span>
                     <span className="a-tech">{p.tech.slice(0, 3).join(" · ")}</span>
@@ -160,6 +166,20 @@ export default function Home() {
             <p className="statement max-w-4xl" id="about-heading">
               One repo or twelve — comfortable running <em>multi-service</em>{" "}
               systems, building my own <em>dev tooling</em> along the way.
+            </p>
+          </Reveal>
+          <Reveal delay={80}>
+            <p className="mt-8 max-w-2xl text-base leading-relaxed text-[var(--muted)]">
+              B.S. Computer Science at Chiang Mai University (expected 2027,
+              GPA 3.54). I started freelancing in my second year — two years
+              later that&apos;s 17 shipped systems for clients across
+              logistics, housing, healthcare and education, plus the homelab
+              this site runs on.
+            </p>
+            <p className="meta mt-6">
+              <span className="dot-live" />
+              Currently — open to full-time &amp; contract work · AI/RAG
+              backends · LINE platform · DevOps
             </p>
           </Reveal>
           <div className="mt-14 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
