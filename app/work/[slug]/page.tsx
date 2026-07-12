@@ -34,7 +34,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description: p.description,
-      images: p.image ? [p.image] : undefined,
+      // og:image comes from ./opengraph-image.tsx (per-project generated card)
     },
   };
 }

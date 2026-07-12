@@ -33,7 +33,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/og-v2.png"],
+    // no images here: home inherits og-v2, detail pages inherit their per-project
+    // opengraph-image via X's og:image fallback
   },
 };
 

@@ -82,8 +82,10 @@ LINE OA admin + intent review (logistics), ตาราง billing + OCR meter (
 ## เว็บ (nice-to-have)
 
 - [x] 6. **Micro-interaction** — hover ที่ archive row มี screenshot preview ลอย (2026-07-12, เฉพาะ row ที่มีภาพ)
-- [ ] 7. **หน้า 404** ธีมเดียวกัน (ตอนนี้เป็น default Next)
-- [ ] 8. **OG image ต่อ project** ถ้าทำ case study — แชร์ลิงก์ระบบไหนได้การ์ดของระบบนั้น
+- [x] 7. **หน้า 404** ธีมเดียวกัน (2026-07-13) — `app/not-found.tsx`, display 404 + accent dot + CTA
+- [x] 8. **OG image ต่อ project** (2026-07-13) — `app/work/[slug]/opengraph-image.tsx` (next/og ImageResponse,
+      dark card: role + ชื่อ + tech + domain), 15 การ์ด prerendered. twitter:image ของ detail คง fallback เป็น
+      site og-v2 (X = channel รอง; og:image ต่อ project ใช้ได้ครบทุกที่ที่แชร์จริง — LINE/FB/LinkedIn)
 
 ## Infra
 
