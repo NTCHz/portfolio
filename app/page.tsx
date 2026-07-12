@@ -83,6 +83,8 @@ export default function Home() {
           Available for work
         </span>
         <span>
+          <Link href="/playground">Ask AI ✦</Link>
+          {"  ·  "}
           <a href="/resume.pdf" target="_blank" rel="noreferrer">Resume ↓</a>
           {"  ·  "}
           <a href={`mailto:${EMAIL}`}>Contact ↗︎</a>

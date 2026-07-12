@@ -62,7 +62,11 @@ LINE OA admin + intent review (logistics), ตาราง billing + OCR meter (
 ## Phase B — Demo ของตัวเอง (IP เราเอง 100%)
 
 สร้าง mini-project ใหม่ที่โชว์สกิลเดียวกับงานลูกค้า → deploy บน homelab + open-source:
-- [ ] **mini RAG chat** (สกิลเดียวกับ multi-LLM chat/SmartMath) → `demo-rag.vlls.space` + repo public
+- [x] **mini RAG chat** (2026-07-13) — ทำเป็น route ในพอร์ต `/playground` "Ask my portfolio" แทน subdomain แยก
+      (live ทันทีตอน push, discoverable ในเว็บ, $0). **BYOK**: visitor วาง OpenAI key เอง (localStorage), ยิงตรง
+      OpenAI ไม่ผ่าน server เรา. corpus = ข้อมูลโปรเจกต์จริง (`lib/rag.ts`), retrieval = BM25-lite ใน browser (k=6),
+      streaming SSE, citations ลิงก์เข้า `/work/[slug]`. verified E2E (mock fetch): LINE→LIFF projects, RAG→multi-llm+smartmath
+      — TODO ถ้าอยาก repo public แยก: extract `/playground` + `lib/rag.ts` เป็น standalone template ทีหลัง
 - [ ] **LIFF QR check-in starter** (สกิล LINE platform ครอบ Meeting LIFF/Uniqal/Loyalty LIFF)
 
 ได้ 3 เด้ง: live demo กดเล่นได้ / เพิ่ม repo public บน GitHub (ตอนนี้เด่นแค่ off-by-none) / ไม่ติดสิทธิ์ใคร
