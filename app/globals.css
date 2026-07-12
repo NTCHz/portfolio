@@ -202,6 +202,7 @@ body {
 
 /* ---------- featured work ---------- */
 .work {
+  position: relative;
   border-top: 1px solid var(--line);
   padding: 3.2rem 0 3.6rem;
 }
@@ -221,6 +222,24 @@ body {
 .work:hover .work-title {
   color: var(--accent);
   transform: translateX(14px);
+}
+.work-title-link {
+  display: inline-block;
+  color: inherit;
+}
+.work-cta {
+  display: inline-block;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s var(--ease-expo);
+}
+.work:hover .work-cta,
+.work-cta:hover {
+  border-color: var(--accent);
 }
 .work-desc {
   font-size: 0.95rem;
@@ -458,6 +477,106 @@ a:focus-visible {
   }
 }
 
+/* ---------- work detail (/work/[slug]) ---------- */
+/* section rule that binds blocks together (echoes .work border-top) */
+.detail-block {
+  border-top: 1px solid var(--line);
+}
+.detail-title {
+  font-family: var(--font-display), Impact, sans-serif;
+  font-size: clamp(2.6rem, 1rem + 6.5vw, 6rem);
+  line-height: 0.92;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+.detail-lede {
+  font-size: clamp(1rem, 0.95rem + 0.4vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--muted);
+}
+.tech-chip {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 0.3rem 0.8rem;
+}
+.detail-link {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s;
+}
+.detail-link:hover {
+  border-color: var(--accent);
+}
+.shot-frame {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg);
+  box-shadow: 0 30px 70px -28px rgba(0, 0, 0, 0.85);
+}
+.shot-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.shot-cap {
+  margin-top: 0.9rem;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.narr {
+  border-top: 1px solid var(--line);
+  padding-top: 1.1rem;
+}
+.narr-label {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.narr-body {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.hi-item {
+  display: flex;
+  gap: 0.7rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.hi-mark {
+  color: var(--accent);
+  flex: none;
+}
+.detail-back {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid transparent;
+  transition: color 0.25s, border-color 0.25s;
+}
+.detail-back:hover {
+  color: var(--ink);
+  border-color: var(--accent);
+}
+
 .a-team {
   font-family: var(--font-geist-mono), monospace;
   font-size: 0.6rem;
@@ -469,6 +588,8 @@ a:focus-visible {
   padding: 0.05rem 0.35rem;
   margin-left: 0.5rem;
   vertical-align: middle;
+  display: inline-block;
+  white-space: nowrap;
 }
 .arow:hover .a-team {
   color: #0c0c0c;

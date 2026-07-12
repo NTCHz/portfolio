@@ -1,6 +1,11 @@
+import Link from "next/link";
 import { projects, type Project } from "@/data/projects";
 import { diagramBySlug } from "@/components/diagrams";
 import { Reveal } from "@/components/reveal";
+
+function hasDetail(p: Project): boolean {
+  return Boolean(p.problem || p.images?.length || p.image);
+}
 
 const EMAIL = "nonnylnwzaza.1122@gmail.com";
 const GITHUB = "https://github.com/NTCHz";
@@ -28,12 +33,19 @@ const skills: { group: string; items: string }[] = [
 
 function Work({ project, index }: { project: Project; index: number }) {
   const Diagram = diagramBySlug[project.slug];
+  const detail = hasDetail(project);
   return (
     <Reveal>
       <article className="work">
         <p className="work-no">/{String(index + 1).padStart(2, "0")}</p>
         <div className="mt-3 grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-end">
-          <h3 className="work-title">{project.name}</h3>
+          {detail ? (
+            <Link href={`/work/${project.slug}`} className="work-title-link">
+              <h3 className="work-title">{project.name}</h3>
+            </Link>
+          ) : (
+            <h3 className="work-title">{project.name}</h3>
+          )}
           <div>
             <p className="work-desc">{project.description}</p>
             {project.proof && <p className="work-proof mt-4">{project.proof}</p>}
@@ -41,6 +53,11 @@ function Work({ project, index }: { project: Project; index: number }) {
               {(project.role ?? "Solo full-stack — design, build, deploy").toUpperCase()}
             </p>
             <p className="work-tech mt-1">{project.tech.join(" / ")}</p>
+            {detail && (
+              <Link href={`/work/${project.slug}`} className="work-cta mt-5">
+                Read case study →
+              </Link>
+            )}
           </div>
         </div>
         {Diagram && (
@@ -137,7 +154,7 @@ export default function Home() {
                     <span className="a-no">{String(i + 5).padStart(2, "0")}</span>
                     <span className="a-name">
                       {p.name}
-                      {p.github ? " ↗︎" : ""}
+                      {hasDetail(p) || p.github ? " ↗︎" : ""}
                       {p.role?.includes("team") && (
                         <span className="a-team"> team</span>
                       )}
@@ -146,7 +163,11 @@ export default function Home() {
                     <span className="a-tech">{p.tech.slice(0, 3).join(" · ")}</span>
                   </>
                 );
-                return p.github ? (
+                return hasDetail(p) ? (
+                  <Link key={p.slug} className="arow" href={`/work/${p.slug}`}>
+                    {inner}
+                  </Link>
+                ) : p.github ? (
                   <a key={p.slug} className="arow" href={p.github} target="_blank" rel="noreferrer">
                     {inner}
                   </a>
