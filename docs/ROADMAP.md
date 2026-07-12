@@ -68,10 +68,11 @@ LINE OA admin + intent review (logistics), ตาราง billing + OCR meter (
       streaming SSE, citations ลิงก์เข้า `/work/[slug]`. verified E2E (mock fetch): LINE→LIFF projects, RAG→multi-llm+smartmath
       — TODO ถ้าอยาก repo public แยก: extract `/playground` + `lib/rag.ts` เป็น standalone template ทีหลัง
 - [x] **LIFF QR check-in starter** (2026-07-13) — repo แยก `~/Projects/DIY_ENGINEERING/liff-checkin-starter`
-      (git init + commit `c55c73f` แล้ว, ยังไม่ push GitHub). vanilla LIFF frontend + **browser demo mode**
-      (mock identity ไม่ต้องมี LINE), Bun+Elysia backend (in-memory store dedupe ต่อ event/userId), bun test 4/4,
-      Dockerfile + MIT + README. verified: check-in → already-checked-in → error states.
-      **ค้างฝั่งนาย:** `gh repo create` (public) + สร้าง LIFF ID (LINE console) + deploy Coolify `demo-checkin.vlls.space`
+      **public แล้ว: https://github.com/NTCHz/liff-checkin-starter** (2 repo public ตอนนี้ กับ off-by-none).
+      vanilla LIFF frontend + **browser demo mode** (mock identity ไม่ต้องมี LINE), Bun+Elysia backend
+      (in-memory store dedupe ต่อ event/userId), bun test 4/4, Dockerfile + MIT + README.
+      verified: check-in → already-checked-in → error states.
+      **ค้างฝั่งนาย:** สร้าง LIFF ID (LINE console) + deploy Coolify `demo-checkin.vlls.space` → ค่อยเพิ่มการ์ด project + live link ในเว็บ
 
 ได้ 3 เด้ง: live demo กดเล่นได้ / เพิ่ม repo public บน GitHub (ตอนนี้เด่นแค่ off-by-none) / ไม่ติดสิทธิ์ใคร
 
