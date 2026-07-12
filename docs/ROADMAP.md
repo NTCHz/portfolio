@@ -72,7 +72,11 @@ LINE OA admin + intent review (logistics), ตาราง billing + OCR meter (
       vanilla LIFF frontend + **browser demo mode** (mock identity ไม่ต้องมี LINE), Bun+Elysia backend
       (in-memory store dedupe ต่อ event/userId), bun test 4/4, Dockerfile + MIT + README.
       verified: check-in → already-checked-in → error states.
-      **ค้างฝั่งนาย:** สร้าง LIFF ID (LINE console) + deploy Coolify `demo-checkin.vlls.space` → ค่อยเพิ่มการ์ด project + live link ในเว็บ
+      **DEPLOY แล้ว (2026-07-13): https://demo-checkin.vlls.space** — Coolify project `demos`
+      (uuid `j95wiei35t79oiwsswenfqv7`), app uuid `a44463z72g1yf28bj6284q0s`, public repo source + Dockerfile,
+      auto-deploy on push. รันแบบ **demo mode** (ยังไม่ใส่ LIFF_ID) กดเล่นได้เลย
+      **ค้างฝั่งนาย:** สร้าง LIFF ID (LINE console, endpoint = demo-checkin.vlls.space) → ใส่ env `LIFF_ID` ใน Coolify
+      → รันใน LINE จริง. แล้วค่อยเพิ่มการ์ด project + live link ในหน้าเว็บ
 
 ได้ 3 เด้ง: live demo กดเล่นได้ / เพิ่ม repo public บน GitHub (ตอนนี้เด่นแค่ off-by-none) / ไม่ติดสิทธิ์ใคร
 
