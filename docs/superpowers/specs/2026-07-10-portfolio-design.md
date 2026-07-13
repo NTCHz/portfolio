@@ -24,8 +24,8 @@ skill itself.
 - **Homelab PaaS** (Railway-like): Coolify or Dokploy — user installs first
   (prerequisite, outside this repo's scope).
 - Pipeline: `git push` → PaaS auto-builds (Dockerfile or nixpacks) → deploys.
-- Exposed via existing **Cloudflare tunnel** → `vlls.space` (or a subdomain,
-  e.g. `www.vlls.space` / `me.vlls.space` — decide at deploy time).
+- Exposed via existing **Cloudflare tunnel** → `shipfold.com` (or a subdomain,
+  e.g. `www.shipfold.com` / `me.shipfold.com` — decide at deploy time).
 - Fallback if homelab is down during a job hunt: the same repo deploys to
   Cloudflare Pages/Vercel with zero code changes. Keep that door open.
 

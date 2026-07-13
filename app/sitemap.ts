@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { projects, type Project } from "@/data/projects";
 
-const BASE = "https://portfolio.vlls.space";
+const BASE = "https://portfolio.shipfold.com";
 
 function hasDetail(p: Project): boolean {
   return Boolean(p.problem || p.images?.length || p.image);

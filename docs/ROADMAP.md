@@ -1,6 +1,6 @@
 # Portfolio Roadmap
 
-สถานะ ณ 2026-07-11: เว็บ live ที่ portfolio.vlls.space — poster design, resume PDF,
+สถานะ ณ 2026-07-11: เว็บ live ที่ portfolio.shipfold.com — poster design, resume PDF,
 Lighthouse A11y 100 / SEO 100 / BP 96, JSON-LD + llms.txt + sitemap ครบ
 Infra: Proxmox → Coolify (VM 4 cores / 12GB RAM / 99GB disk, auto-cleanup ทุก 4 ชม.)
 
@@ -72,10 +72,10 @@ LINE OA admin + intent review (logistics), ตาราง billing + OCR meter (
       vanilla LIFF frontend + **browser demo mode** (mock identity ไม่ต้องมี LINE), Bun+Elysia backend
       (in-memory store dedupe ต่อ event/userId), bun test 4/4, Dockerfile + MIT + README.
       verified: check-in → already-checked-in → error states.
-      **DEPLOY แล้ว (2026-07-13): https://demo-checkin.vlls.space** — Coolify project `demos`
+      **DEPLOY แล้ว (2026-07-13): https://demo-checkin.shipfold.com** — Coolify project `demos`
       (uuid `j95wiei35t79oiwsswenfqv7`), app uuid `a44463z72g1yf28bj6284q0s`, public repo source + Dockerfile,
       auto-deploy on push. รันแบบ **demo mode** (ยังไม่ใส่ LIFF_ID) กดเล่นได้เลย
-      **ค้างฝั่งนาย:** สร้าง LIFF ID (LINE console, endpoint = demo-checkin.vlls.space) → ใส่ env `LIFF_ID` ใน Coolify
+      **ค้างฝั่งนาย:** สร้าง LIFF ID (LINE console, endpoint = demo-checkin.shipfold.com) → ใส่ env `LIFF_ID` ใน Coolify
       → รันใน LINE จริง. แล้วค่อยเพิ่มการ์ด project + live link ในหน้าเว็บ
 
 ได้ 3 เด้ง: live demo กดเล่นได้ / เพิ่ม repo public บน GitHub (ตอนนี้เด่นแค่ off-by-none) / ไม่ติดสิทธิ์ใคร
@@ -104,7 +104,7 @@ LINE OA admin + intent review (logistics), ตาราง billing + OCR meter (
 
 - [ ] 9. **Backup**: `/data/coolify` + Postgres ยังไม่มี backup ออกนอกเครื่อง — Coolify มี S3 backup ในตัว ชี้ไป MinIO/B2 ได้
 - [ ] 10. ต่อ **notification** (Discord/Telegram) ใน Coolify — ตั้งเตือน disk 70% ไว้แล้วแต่ไม่มีช่องทางส่ง
-- [ ] 11. **Uptime-kuma** เพิ่ม monitor portfolio.vlls.space + แจ้งเตือนเว็บล่ม (kuma รันอยู่แล้วใน VM เดียวกัน)
+- [ ] 11. **Uptime-kuma** เพิ่ม monitor portfolio.shipfold.com + แจ้งเตือนเว็บล่ม (kuma รันอยู่แล้วใน VM เดียวกัน)
 - [ ] 12. เปิด **2FA ใน Coolify** (Profile → Two-factor Authentication — ค้างจากวันแรก)
 - [ ] 13. **ตุลา 2026: ย้าย domain** — จุดที่ต้องแก้: CF tunnel hostnames, Coolify wildcard + app domain,
       `metadataBase`/OG ใน `app/layout.tsx`, ลิงก์ใน `resume/resume.tex`, `public/llms.txt`

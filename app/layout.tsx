@@ -19,7 +19,7 @@ const display = Anton({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://portfolio.vlls.space"),
+  metadataBase: new URL("https://portfolio.shipfold.com"),
   title: "Thichanon Ratanasaenwan — Full-stack Developer",
   description:
     "Full-stack developer building AI/RAG systems, LINE-platform apps, and the infrastructure that keeps them running. Portfolio of Thichanon (Nonny) Ratanasaenwan.",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: "Thichanon Ratanasaenwan — Full-stack Developer",
     description:
       "AI/RAG systems, LINE-platform apps, and self-hosted infrastructure.",
-    url: "https://portfolio.vlls.space",
+    url: "https://portfolio.shipfold.com",
     type: "website",
     images: [{ url: "/og-v2.png", width: 1400, height: 735 }],
   },
@@ -59,7 +59,7 @@ export default function RootLayout({
               name: "Thichanon Ratanasaenwan",
               alternateName: "Nont",
               jobTitle: "Full-stack Developer",
-              url: "https://portfolio.vlls.space",
+              url: "https://portfolio.shipfold.com",
               email: "mailto:nonnylnwzaza.1122@gmail.com",
               address: { "@type": "PostalAddress", addressLocality: "Chiang Mai", addressCountry: "TH" },
               alumniOf: { "@type": "CollegeOrUniversity", name: "Chiang Mai University" },

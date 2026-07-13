@@ -13,7 +13,7 @@ behind a Cloudflare Tunnel.
 - SmartMath: AI math-learning platform — RAG over textbooks, quiz generation; Elysia/Bun + LangChain + Pinecone + RabbitMQ
 - Repair Service Platform: 4 apps (admin/superadmin/LIFF/Expo) on one Bun API, PDF generation, OpenTelemetry
 - Logistics LINE OA Manager: LINE OA group manager + shipment tracking with AI intent analysis, Azure AD SSO (Thai logistics client)
-- Plus 13 more systems listed on [the site](https://portfolio.vlls.space), and open-source work on [GitHub](https://github.com/NTCHz)
+- Plus 13 more systems listed on [the site](https://portfolio.shipfold.com), and open-source work on [GitHub](https://github.com/NTCHz)
 
 ## Skills
 
@@ -25,4 +25,4 @@ Next.js, Nuxt, Expo · PostgreSQL, Prisma, Drizzle · Docker, Proxmox, Coolify, 
 - [Email](mailto:nonnylnwzaza.1122@gmail.com): nonnylnwzaza.1122@gmail.com
 - [GitHub](https://github.com/NTCHz): open-source work, e.g. the off-by-none Claude Code skill
 - [LinkedIn](https://www.linkedin.com/in/thichanon-ratanasaenwan): professional profile
-- [Resume (PDF)](https://portfolio.vlls.space/resume.pdf): one-page resume
+- [Resume (PDF)](https://portfolio.shipfold.com/resume.pdf): one-page resume

@@ -52,7 +52,7 @@ export default async function Image({
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", fontSize: 28 }}>
           <span style={{ color: "#f5f5f5" }}>Thichanon Ratanasaenwan</span>
-          <span style={{ color: "#8a8a8a" }}>portfolio.vlls.space</span>
+          <span style={{ color: "#8a8a8a" }}>portfolio.shipfold.com</span>
         </div>
       </div>
     ),

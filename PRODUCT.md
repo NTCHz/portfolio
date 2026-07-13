@@ -8,7 +8,7 @@ brand — a portfolio: design IS the product. The visitor's impression is the de
 
 Personal portfolio of Thichanon "Nont" Ratanasaenwan (github.com/NTCHz) — full-stack
 developer: RAG/LLM backends, LINE-platform apps, self-hosted infra. Live at
-https://portfolio.vlls.space, served from his own Proxmox homelab through Coolify
+https://portfolio.shipfold.com, served from his own Proxmox homelab through Coolify
 and a Cloudflare tunnel (this fact is part of the brand).
 
 ## Target users
