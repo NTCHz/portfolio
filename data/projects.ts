@@ -104,7 +104,7 @@ export const projects: Project[] = [
     description:
       'Repair-job platform for a service company in four apps — admin, superadmin, LIFF, Expo mobile — with PDF generation, push notifications and OpenTelemetry tracing.',
     tech: ['Elysia · Bun', 'Prisma', 'Expo', 'LINE LIFF'],
-    proof: '4 apps on one Bun API — admin · superadmin · LIFF · Expo mobile',
+    proof: 'In company-wide daily use at 2 companies · 4 apps on one Bun API — admin · superadmin · LIFF · Expo mobile',
     featured: true,
     image: '/shots/repair-dashboard.webp',
     imageAlt:
@@ -114,7 +114,7 @@ export const projects: Project[] = [
     approach:
       'One Bun/Elysia API drives four surfaces: an admin dashboard, a superadmin console, a LINE LIFF app for reporters, and an Expo mobile app for technicians. Every repair moves through an explicit state machine (pending → safety check → in progress → completed → verified) with role-scoped approvals, PDF work orders, push notifications and OpenTelemetry tracing across the whole flow.',
     result:
-      'Repairs now have a single source of truth with an auditable approval chain; the same API serves web, LIFF and mobile so nobody re-enters data. Status is visible at a glance on the dashboard.',
+      'Now in company-wide daily use at two companies: repairs have a single source of truth with an auditable approval chain, and the same API serves web, LIFF and mobile so nobody re-enters data. Status is visible at a glance on the dashboard.',
     highlights: [
       'One Bun API behind admin · superadmin · LIFF · Expo mobile',
       'Explicit repair state machine with role-scoped approvals',
@@ -145,7 +145,7 @@ export const projects: Project[] = [
     description:
       'LINE OA group manager + shipment tracking for a Thai logistics company: automated mention replies, broadcasts, product carousels, AI intent analysis, Azure AD login.',
     tech: ['Next.js', 'LINE Bot SDK', 'OpenAI', 'Prisma'],
-    proof: 'AI intent analysis + human review loop · Azure AD SSO',
+    proof: '2,395 LINE business groups managed (95% active) · 16.5k conversations AI-triaged with human review',
     featured: true,
     image: '/shots/fdj-dashboard.webp',
     imageAlt:
@@ -155,7 +155,7 @@ export const projects: Project[] = [
     approach:
       'A Next.js console sits on top of the LINE Bot SDK: it auto-replies to @mentions via keyword and regex rules, segments groups by business type for targeted broadcasts, and runs each inbound message through OpenAI intent analysis with a human review loop before anything is sent. Staff sign in with Azure AD SSO.',
     result:
-      'Repetitive questions get answered automatically with a measured match rate; broadcasts go to the right segment in one action; and AI intent classification is gated by human review so nothing risky goes out unchecked.',
+      '2,395 connected LINE business groups (95% active) across restaurants, hotels and cafés — segmented broadcasts go out in one action instead of one-by-one, and 16.5k customer conversations have been AI-triaged with a human review gate so nothing risky goes out unchecked.',
     highlights: [
       'Keyword + regex mention auto-reply rules',
       'Segmented broadcasts by business type',
@@ -186,6 +186,7 @@ export const projects: Project[] = [
     description:
       'Dormitory operations for a housing operator — rooms, tenants, billing. OCR meter readings with Tesseract, server-rendered receipt images via Satori.',
     tech: ['Elysia · Bun', 'Prisma', 'Tesseract OCR', 'LIFF'],
+    proof: 'In use across multiple dorm buildings · per-room billing from OCR meter reads',
     image: '/shots/horpak-invoices.webp',
     imageAlt:
       'Dormitory billing — monthly invoices per room with paid, verifying and overdue statuses',
@@ -220,6 +221,7 @@ export const projects: Project[] = [
     description:
       'Real-time chat + push notifications for a manufacturing team — Expo mobile, admin dashboard and a Socket.IO API.',
     tech: ['Express', 'MongoDB', 'Socket.IO', 'Expo'],
+    proof: 'In company-wide daily use at 2 companies · real-time chat + presence over Socket.IO',
     image: '/shots/fieldops-users.webp',
     imageAlt: 'Field ops admin — user management table with roles and online status',
     problem:
@@ -248,6 +250,7 @@ export const projects: Project[] = [
     description:
       'LINE-based loyalty & rewards platform for a local retail business — points, presigned S3 uploads.',
     tech: ['Next.js', 'Prisma', 'LINE LIFF', 'S3'],
+    proof: '24,786 points issued across 69 members · runs entirely inside LINE (LIFF)',
     image: '/shots/earnpoint-users.webp',
     imageAlt:
       'Loyalty admin panel — member list with points, accumulated spend and premium tiers',
