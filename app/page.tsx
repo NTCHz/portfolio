@@ -31,6 +31,62 @@ const skills: { group: string; items: string }[] = [
   { group: "Infra", items: "Docker · Proxmox · Coolify · Cloudflare · self-hosted CI/CD" },
 ];
 
+type Demo = {
+  title: string;
+  blurb: string;
+  tech: string[];
+  live: { href: string; label: string };
+  source?: string;
+};
+
+const demos: Demo[] = [
+  {
+    title: "Ask my portfolio",
+    blurb:
+      "A retrieval-augmented chat grounded on my real shipped projects. Bring your own OpenAI key — keyword retrieval runs in your browser, answers cite the systems they came from.",
+    tech: ["Next.js", "RAG", "BM25", "Streaming"],
+    live: { href: "/playground", label: "Open ↗" },
+  },
+  {
+    title: "LIFF event check-in",
+    blurb:
+      "Scan a QR, check in with your LINE identity, watch a live organizer dashboard fill up. Works in any browser via demo mode — no LINE app needed to try it.",
+    tech: ["LINE LIFF", "Bun", "Elysia"],
+    live: {
+      href: "https://demo-checkin.shipfold.com/?event=cmu-demo-day-2026",
+      label: "Live ↗",
+    },
+    source: "https://github.com/NTCHz/liff-checkin-starter",
+  },
+];
+
+function DemoCard({ demo }: { demo: Demo }) {
+  const internal = demo.live.href.startsWith("/");
+  return (
+    <div className="demo-card">
+      <h3 className="demo-title">{demo.title}</h3>
+      <p className="demo-blurb mt-3">{demo.blurb}</p>
+      <p className="demo-tech mt-5">{demo.tech.join(" / ")}</p>
+      <div className="demo-actions mt-6">
+        {internal ? (
+          <Link href={demo.live.href} className="demo-cta">
+            {demo.live.label}
+          </Link>
+        ) : (
+          <a href={demo.live.href} target="_blank" rel="noreferrer" className="demo-cta">
+            {demo.live.label}
+          </a>
+        )}
+        {demo.source && (
+          <a href={demo.source} target="_blank" rel="noreferrer" className="demo-src">
+            Source ↗
+          </a>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function Work({ project, index }: { project: Project; index: number }) {
   const Diagram = diagramBySlug[project.slug];
   const detail = hasDetail(project);
@@ -123,6 +179,25 @@ export default function Home() {
             <span>{marquee}</span>
           </div>
         </div>
+
+        {/* live demos — own IP, playable */}
+        <section aria-labelledby="demos-heading" className="mx-auto w-full max-w-6xl px-6 md:px-10 pt-24 md:pt-32 pb-4">
+          <Reveal>
+            <div className="flex items-baseline justify-between">
+              <h2 className="meta" id="demos-heading">
+                Live — things you can actually click
+              </h2>
+              <span className="meta">Own IP · open-source</span>
+            </div>
+          </Reveal>
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
+            {demos.map((d, i) => (
+              <Reveal key={d.title} delay={i * 80}>
+                <DemoCard demo={d} />
+              </Reveal>
+            ))}
+          </div>
+        </section>
 
         {/* featured works */}
         <section aria-labelledby="work-heading" className="mx-auto w-full max-w-6xl px-6 md:px-10 pt-24 md:pt-32 pb-16">

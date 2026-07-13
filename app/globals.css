@@ -733,3 +733,58 @@ a:focus-visible {
   font-size: 0.85rem;
   color: #ff6b3d;
 }
+
+/* ── live demo cards ────────────────────────────────────── */
+.demo-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 28px 26px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, rgba(236, 236, 236, 0.02), transparent);
+  transition: border-color 240ms var(--ease-expo), transform 240ms var(--ease-expo);
+}
+.demo-card:hover {
+  border-color: rgba(255, 77, 0, 0.45);
+  transform: translateY(-3px);
+}
+.demo-title {
+  font-family: var(--font-display), Impact, sans-serif;
+  font-size: clamp(1.5rem, 3.4vw, 2rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+}
+.demo-blurb {
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  flex: 1;
+}
+.demo-tech {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.demo-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.demo-cta {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  transition: opacity 150ms;
+}
+.demo-cta:hover { opacity: 0.75; }
+.demo-src {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.85rem;
+  color: var(--muted);
+  transition: color 150ms;
+}
+.demo-src:hover { color: var(--ink); }
