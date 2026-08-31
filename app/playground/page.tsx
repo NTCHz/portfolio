@@ -44,10 +44,12 @@ export default function Playground() {
   const [error, setError] = useState<string | null>(null);
   const streamRef = useRef<HTMLDivElement>(null);
 
-  // Load key from localStorage after mount (client only).
+  // localStorage does not exist during SSR, so the stored key can only be read
+  // after mount — a lazy useState initializer would desync server and client HTML.
   useEffect(() => {
     const k = window.localStorage.getItem(KEY_STORE);
     if (k) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setApiKey(k);
       setSavedKey(true);
     }
@@ -119,7 +121,6 @@ export default function Playground() {
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
       let buf = "";
-      let acc = "";
       // Parse Server-Sent Events: lines of `data: {json}` ending in `data: [DONE]`.
       // eslint-disable-next-line no-constant-condition
       while (true) {
@@ -136,12 +137,12 @@ export default function Playground() {
           try {
             const delta = JSON.parse(payload).choices?.[0]?.delta?.content;
             if (delta) {
-              acc += delta;
               setMessages((prev) => {
                 const next = [...prev];
+                const last = next[next.length - 1];
                 next[next.length - 1] = {
-                  ...next[next.length - 1],
-                  content: acc,
+                  ...last,
+                  content: last.content + delta,
                 };
                 return next;
               });
