@@ -4,7 +4,7 @@ const EMAIL = "nonnylnwzaza.1122@gmail.com";
 
 export default function NotFound() {
   return (
-    <main>
+    <main className="flex min-h-screen flex-col">
       <header className="nav">
         <Link href="/">← Back</Link>
         <span className="hidden sm:inline">
