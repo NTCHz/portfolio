@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { buildCorpus, retrieve, buildContext, type Scored } from "@/lib/rag";
 
@@ -15,6 +15,29 @@ const SUGGESTIONS = [
   "Which projects used self-hosted infrastructure?",
   "Show me his logistics or delivery work.",
 ];
+
+const listeners = new Set<() => void>();
+
+const keyStore = {
+  subscribe(onChange: () => void) {
+    listeners.add(onChange);
+    window.addEventListener("storage", onChange);
+    return () => {
+      listeners.delete(onChange);
+      window.removeEventListener("storage", onChange);
+    };
+  },
+  get: () => window.localStorage.getItem(KEY_STORE) ?? "",
+  // localStorage writes fire `storage` only in *other* tabs, so notify this one.
+  set(value: string) {
+    window.localStorage.setItem(KEY_STORE, value);
+    listeners.forEach((l) => l());
+  },
+  clear() {
+    window.localStorage.removeItem(KEY_STORE);
+    listeners.forEach((l) => l());
+  },
+};
 
 type Msg = {
   role: "user" | "assistant";
@@ -36,40 +59,30 @@ function systemPrompt(context: string): string {
 
 export default function Playground() {
   const corpus = useMemo(() => buildCorpus(), []);
-  const [apiKey, setApiKey] = useState("");
-  const [savedKey, setSavedKey] = useState(false);
+  const storedKey = useSyncExternalStore(keyStore.subscribe, keyStore.get, () => "");
+  const savedKey = storedKey !== "";
+  const [draftKey, setDraftKey] = useState("");
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Msg[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const streamRef = useRef<HTMLDivElement>(null);
 
-  // Load key from localStorage after mount (client only).
-  useEffect(() => {
-    const k = window.localStorage.getItem(KEY_STORE);
-    if (k) {
-      setApiKey(k);
-      setSavedKey(true);
-    }
-  }, []);
-
   function saveKey() {
-    if (!apiKey.trim()) return;
-    window.localStorage.setItem(KEY_STORE, apiKey.trim());
-    setSavedKey(true);
+    if (!draftKey.trim()) return;
+    keyStore.set(draftKey.trim());
+    setDraftKey("");
     setError(null);
   }
 
   function clearKey() {
-    window.localStorage.removeItem(KEY_STORE);
-    setApiKey("");
-    setSavedKey(false);
+    keyStore.clear();
   }
 
   async function ask(question: string) {
     const q = question.trim();
     if (!q || loading) return;
-    if (!apiKey.trim()) {
+    if (!storedKey) {
       setError("Add your OpenAI API key first — it stays in your browser.");
       return;
     }
@@ -93,7 +106,7 @@ export default function Playground() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${apiKey.trim()}`,
+          Authorization: `Bearer ${storedKey}`,
         },
         body: JSON.stringify({
           model: MODEL,
@@ -119,9 +132,7 @@ export default function Playground() {
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
       let buf = "";
-      let acc = "";
       // Parse Server-Sent Events: lines of `data: {json}` ending in `data: [DONE]`.
-      // eslint-disable-next-line no-constant-condition
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
@@ -136,12 +147,12 @@ export default function Playground() {
           try {
             const delta = JSON.parse(payload).choices?.[0]?.delta?.content;
             if (delta) {
-              acc += delta;
               setMessages((prev) => {
                 const next = [...prev];
+                const last = next[next.length - 1];
                 next[next.length - 1] = {
-                  ...next[next.length - 1],
-                  content: acc,
+                  ...last,
+                  content: last.content + delta,
                 };
                 return next;
               });
@@ -205,8 +216,8 @@ export default function Playground() {
             <div className="flex flex-col gap-3 sm:flex-row">
               <input
                 type="password"
-                value={apiKey}
-                onChange={(e) => setApiKey(e.target.value)}
+                value={draftKey}
+                onChange={(e) => setDraftKey(e.target.value)}
                 placeholder="sk-…  (OpenAI API key, stays in your browser)"
                 className="pg-input grow"
                 autoComplete="off"
