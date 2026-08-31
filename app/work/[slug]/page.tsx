@@ -31,7 +31,9 @@ export async function generateMetadata({
   return {
     title,
     description: p.description,
+    alternates: { canonical: `/work/${p.slug}` },
     openGraph: {
+      url: `/work/${p.slug}`,
       title,
       description: p.description,
       // og:image comes from ./opengraph-image.tsx (per-project generated card)

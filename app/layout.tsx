@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   title: "Thichanon Ratanasaenwan — Full-stack Developer",
   description:
     "Full-stack developer building AI/RAG systems, LINE-platform apps, and the infrastructure that keeps them running. Portfolio of Thichanon (Nonny) Ratanasaenwan.",
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Thichanon Ratanasaenwan — Full-stack Developer",
     description:
