@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Anton, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { SignalField } from "@/components/signal-field";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,6 +56,7 @@ export default function RootLayout({
             __html: `document.documentElement.classList.add("js")`,
           }}
         />
+        <SignalField />
         <SmoothScroll />
         {children}
         <script

@@ -12,10 +12,21 @@
 
 html {
   scroll-behavior: smooth;
+  /* the page background lives here, not on body: the signal field sits at
+     z-index -1, which paints behind body's background but in front of html's */
+  background: var(--bg);
+}
+
+/* WebGL signal field (components/signal-field). Absent under reduced motion or
+   without WebGL, in which case html's background is the whole background. */
+.signal-field {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
 }
 
 body {
-  background: var(--bg);
   color: var(--ink);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
