@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { buildCorpus, retrieve, buildContext, type Scored } from "@/lib/rag";
 
@@ -22,6 +22,29 @@ type Msg = {
   cites?: Scored[];
 };
 
+// localStorage is an external store, not React state: same-tab writes emit no
+// `storage` event, so writeStoredKey notifies the subscribers itself.
+const keyListeners = new Set<() => void>();
+
+function subscribeStoredKey(onChange: () => void): () => void {
+  keyListeners.add(onChange);
+  window.addEventListener("storage", onChange);
+  return () => {
+    keyListeners.delete(onChange);
+    window.removeEventListener("storage", onChange);
+  };
+}
+
+function readStoredKey(): string | null {
+  return window.localStorage.getItem(KEY_STORE);
+}
+
+function writeStoredKey(value: string | null): void {
+  if (value === null) window.localStorage.removeItem(KEY_STORE);
+  else window.localStorage.setItem(KEY_STORE, value);
+  for (const notify of keyListeners) notify();
+}
+
 function systemPrompt(context: string): string {
   return [
     "You are the portfolio assistant for Thichanon (Nont) Ratanasaenwan, a full-stack developer.",
@@ -36,40 +59,34 @@ function systemPrompt(context: string): string {
 
 export default function Playground() {
   const corpus = useMemo(() => buildCorpus(), []);
+  const storedKey = useSyncExternalStore(
+    subscribeStoredKey,
+    readStoredKey,
+    () => null,
+  );
   const [apiKey, setApiKey] = useState("");
-  const [savedKey, setSavedKey] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Msg[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const streamRef = useRef<HTMLDivElement>(null);
 
-  // Load key from localStorage after mount (client only).
-  useEffect(() => {
-    const k = window.localStorage.getItem(KEY_STORE);
-    if (k) {
-      setApiKey(k);
-      setSavedKey(true);
-    }
-  }, []);
-
   function saveKey() {
     if (!apiKey.trim()) return;
-    window.localStorage.setItem(KEY_STORE, apiKey.trim());
-    setSavedKey(true);
+    writeStoredKey(apiKey.trim());
+    setApiKey("");
     setError(null);
   }
 
   function clearKey() {
-    window.localStorage.removeItem(KEY_STORE);
+    writeStoredKey(null);
     setApiKey("");
-    setSavedKey(false);
   }
 
   async function ask(question: string) {
     const q = question.trim();
     if (!q || loading) return;
-    if (!apiKey.trim()) {
+    if (!storedKey) {
       setError("Add your OpenAI API key first — it stays in your browser.");
       return;
     }
@@ -93,7 +110,7 @@ export default function Playground() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${apiKey.trim()}`,
+          Authorization: `Bearer ${storedKey}`,
         },
         body: JSON.stringify({
           model: MODEL,
@@ -119,10 +136,8 @@ export default function Playground() {
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
       let buf = "";
-      let acc = "";
       // Parse Server-Sent Events: lines of `data: {json}` ending in `data: [DONE]`.
-      // eslint-disable-next-line no-constant-condition
-      while (true) {
+      for (;;) {
         const { done, value } = await reader.read();
         if (done) break;
         buf += decoder.decode(value, { stream: true });
@@ -136,12 +151,12 @@ export default function Playground() {
           try {
             const delta = JSON.parse(payload).choices?.[0]?.delta?.content;
             if (delta) {
-              acc += delta;
               setMessages((prev) => {
                 const next = [...prev];
+                const last = next[next.length - 1];
                 next[next.length - 1] = {
-                  ...next[next.length - 1],
-                  content: acc,
+                  ...last,
+                  content: last.content + delta,
                 };
                 return next;
               });
@@ -192,7 +207,7 @@ export default function Playground() {
 
         {/* key management */}
         <div className="pg-key mt-8">
-          {savedKey ? (
+          {storedKey ? (
             <div className="flex items-center justify-between gap-4">
               <span className="pg-key-ok">
                 <span className="dot-live" /> Key saved in this browser
