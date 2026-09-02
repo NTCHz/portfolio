@@ -38,6 +38,12 @@ as bland): grid field, cyan signal glow, terminal motifs, bento project tiers.
 
 ## Constraints
 
-- Next.js App Router + Tailwind v4, static, zero client JS where possible
+- Next.js App Router + Tailwind v4; pages stay statically rendered
+- A client-side motion layer is allowed and wanted: Lenis smooth scroll + GSAP
+  ScrollTrigger now, a WebGL point field later
+- Perf budget: total JS well under 1MB. Reference weight class is
+  david-hckh.com (~1.02MB), not worawork.vercel.app (~3.96MB)
+- Degradation is not optional: with `prefers-reduced-motion` set, with WebGL
+  unavailable, or with JS off entirely, the site must still render complete and
+  usable. Nothing may be permanently invisible.
 - Content single source: `data/projects.ts`
-- CSS motion only; respect prefers-reduced-motion

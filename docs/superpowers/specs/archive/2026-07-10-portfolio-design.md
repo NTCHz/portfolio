@@ -1,7 +1,9 @@
 # Portfolio Website — Design Spec
 
 **Date:** 2026-07-10
-**Status:** Approved pending user review
+**Status:** Archived — historical record of the original launch spec. Shipped,
+then superseded. Current direction lives in `PRODUCT.md` and `DESIGN.md`; do not
+implement from this file.
 **Repo:** ~/portfolio (new)
 
 ## Goal
