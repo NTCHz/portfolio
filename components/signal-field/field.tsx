@@ -5,13 +5,9 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { FRAGMENT, VERTEX } from "./shaders";
 
-// Cyan phosphor from DESIGN.md's signal-field entry. One constant: the whole
-// layer's colour lives here.
-const COLOR = "#00e5ff";
-
 // Additive blending stacks overlapping points, so this is a per-point ceiling,
 // not the brightest pixel. See the PR for the measured worst-case contrast.
-const OPACITY = 0.22;
+const OPACITY = 0.31;
 
 const CAMERA_Z = 8;
 const FOV = 60;
@@ -46,7 +42,7 @@ function buildGeometry(count: number): THREE.BufferGeometry {
   return geometry;
 }
 
-function Points({ count }: { count: number }) {
+function Points({ count, accent }: { count: number; accent: string }) {
   const { size } = useThree();
   const material = useRef<THREE.ShaderMaterial>(null);
   const pointer = useRef(new THREE.Vector2(1e3, 1e3));
@@ -62,10 +58,10 @@ function Points({ count }: { count: number }) {
       uSize: { value: 45 },
       uPixelRatio: { value: 1 },
       uDepth: { value: DEPTH },
-      uColor: { value: new THREE.Color(COLOR) },
+      uColor: { value: new THREE.Color(accent) },
       uOpacity: { value: OPACITY },
     }),
-    [],
+    [accent],
   );
 
   useEffect(() => {
@@ -126,6 +122,16 @@ export default function Field() {
     [],
   );
 
+  // The field is the site's accent colour, read off the one token that already
+  // defines it rather than a second copy of the hex living in JS.
+  const accent = useMemo(
+    () =>
+      getComputedStyle(document.documentElement)
+        .getPropertyValue("--accent")
+        .trim() || "#ffffff",
+    [],
+  );
+
   return (
     <div className="signal-field" aria-hidden>
       <Canvas
@@ -133,7 +139,7 @@ export default function Field() {
         camera={{ position: [0, 0, CAMERA_Z], fov: FOV }}
         gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}
       >
-        <Points count={small ? COUNT_SMALL : COUNT_DESKTOP} />
+        <Points count={small ? COUNT_SMALL : COUNT_DESKTOP} accent={accent} />
       </Canvas>
     </div>
   );
