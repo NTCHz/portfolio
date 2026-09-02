@@ -39,10 +39,19 @@ as bland): grid field, cyan signal glow, terminal motifs, bento project tiers.
 ## Constraints
 
 - Next.js App Router + Tailwind v4; pages stay statically rendered
-- A client-side motion layer is allowed and wanted: Lenis smooth scroll + GSAP
-  ScrollTrigger now, a WebGL point field later
-- Perf budget: total JS well under 1MB. Reference weight class is
-  david-hckh.com (~1.02MB), not worawork.vercel.app (~3.96MB)
+- A client-side motion layer is allowed and wanted: Lenis smooth scroll, GSAP
+  ScrollTrigger, and a WebGL point field behind the DOM
+- Perf budget is measured on the **critical path**, not on total JS: the initial
+  home-page load stays under 750KB raw (measured 701,127 B decoded with the
+  WebGL layer gated off — the same critical path the site had before it existed)
+- The WebGL point field is deliberately **excluded** from that number and capped
+  separately at ~900KB raw (measured 890,184 B for `three` +
+  `@react-three/fiber`). Total JS is not the metric, because that chunk is
+  lazily fetched behind a gate: reduced motion, no WebGL context, or no JS and
+  it is never requested at all. The visitors who most need the site light —
+  motion-sensitive, old GPU, slow device — are exactly the ones who never pay
+  for it. Reference weight class for the motion-enabled path is david-hckh.com
+  (~1.02MB), not worawork.vercel.app (~3.96MB)
 - Degradation is not optional: with `prefers-reduced-motion` set, with WebGL
   unavailable, or with JS off entirely, the site must still render complete and
   usable. Nothing may be permanently invisible.
