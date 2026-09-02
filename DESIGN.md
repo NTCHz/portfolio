@@ -35,8 +35,25 @@ rationed to interactive/signal moments so it stays hot.
 - Manifest readout: host/edge/stack/status of the actual homelab serving the page.
 - Bento project grid: 3 featured systems as large tiles (path-style header
   `~/systems/<slug>`), the rest as compact tiles. Hover = cyan border + glow lift.
+- **Signal field**: one fixed WebGL canvas behind the DOM, carrying a cyan point
+  cloud that morphs as you scroll — a noise cloud at the hero, a constellation
+  of the 17 systems over the work sections, collapsing to a single line at
+  contact. It is background, never chrome: the site reads the same without it.
 
 ## Motion
 
-CSS only: cursor blink, hero rise stagger, hover glow/lift transitions
-(180–350ms, ease-out expo). All gated behind prefers-reduced-motion.
+Scroll is the instrument. Three layers, in order of how early they ship:
+
+1. **Lenis** — smooth scroll for the whole document. One instance, mounted from
+   the root layout, driven off `requestAnimationFrame`.
+2. **GSAP + ScrollTrigger** — section reveals and scroll-linked sequencing.
+   ScrollTrigger reads scroll position from Lenis's callback, so the two share
+   one source of truth. transform/opacity only.
+3. **WebGL point field** — later. See *Signal field* above.
+
+CSS keeps the small stuff it already does well: cursor blink, hover glow/lift
+(180–350ms, ease-out expo).
+
+Reduced motion is a real branch, not a lower amplitude: Lenis is never
+constructed, native scroll takes over, and every revealed element renders in
+its final visible state. Same for JS-off — the un-animated page is the page.

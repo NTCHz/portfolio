@@ -108,58 +108,28 @@ body {
   }
 }
 
-/* reveal base (from components/reveal) */
-.reveal {
-  opacity: 0;
-  transform: translateY(26px);
-  transition:
-    opacity 0.9s var(--ease-expo),
-    transform 0.9s var(--ease-expo);
-}
-.reveal.in {
-  opacity: 1;
-  transform: none;
-}
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-
-/* load-time rise for hero */
+/* Pre-animation states for GSAP (components/reveal). Gated on `.js`, which the
+   inline script in app/layout.tsx adds: without JS nothing animates them back
+   into view, so they must never start hidden. */
 @media (prefers-reduced-motion: no-preference) {
-  .rise {
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  .js .rise {
     opacity: 0;
     transform: translateY(24px);
-    animation: rise 1s var(--ease-expo) forwards;
   }
-  .rise-2 { animation-delay: 0.15s; }
-  .rise-3 { animation-delay: 0.3s; }
-  @keyframes rise {
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
-  .hero-line > span {
-    display: block;
+  .js .hero-line > span {
     transform: translateY(115%);
-    animation: lineup 1.15s var(--ease-expo) forwards;
-  }
-  .hero-line:nth-child(2) > span {
-    animation-delay: 0.1s;
   }
 }
 .hero-line {
   overflow: hidden;
   display: block;
 }
-@keyframes lineup {
-  to {
-    transform: none;
-  }
+.hero-line > span {
+  display: block;
 }
 
 /* ---------- marquee ---------- */

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { projects, type Project } from "@/data/projects";
 import { diagramBySlug } from "@/components/diagrams";
-import { Reveal } from "@/components/reveal";
+import { HeroReveal, Reveal } from "@/components/reveal";
 
 function hasDetail(p: Project): boolean {
   return Boolean(p.problem || p.images?.length || p.image);
@@ -150,26 +150,28 @@ export default function Home() {
       <main>
         {/* hero */}
         <section aria-labelledby="hero-heading" className="mx-auto w-full max-w-6xl px-6 md:px-10 pt-32 md:pt-40 pb-10">
-          <h1 id="hero-heading" className="mega">
-            <span className="hero-line" style={{ fontSize: "clamp(3rem, 19.5vw, 15rem)" }}>
-              <span>Thichanon</span>
-            </span>
-            <span className="hero-line" style={{ fontSize: "clamp(2rem, 12.8vw, 9.9rem)" }}>
-              <span>
-                Ratanasaenwan<span style={{ color: "var(--accent)" }}>.</span>
+          <HeroReveal>
+            <h1 id="hero-heading" className="mega">
+              <span className="hero-line" style={{ fontSize: "clamp(3rem, 19.5vw, 15rem)" }}>
+                <span>Thichanon</span>
               </span>
-            </span>
-          </h1>
-          <div className="rise rise-2 mt-8">
-            <p className="max-w-md text-base md:text-lg leading-relaxed text-[var(--muted)]">
-              Full-stack developer building production systems end to end —
-              RAG/LLM backends, LINE-native apps, and the DevOps that keeps them
-              running.
-            </p>
-            <p className="meta mt-6">
-              Chiang Mai, TH · Self-hosted on my own homelab
-            </p>
-          </div>
+              <span className="hero-line" style={{ fontSize: "clamp(2rem, 12.8vw, 9.9rem)" }}>
+                <span>
+                  Ratanasaenwan<span style={{ color: "var(--accent)" }}>.</span>
+                </span>
+              </span>
+            </h1>
+            <div className="rise mt-8">
+              <p className="max-w-md text-base md:text-lg leading-relaxed text-[var(--muted)]">
+                Full-stack developer building production systems end to end —
+                RAG/LLM backends, LINE-native apps, and the DevOps that keeps them
+                running.
+              </p>
+              <p className="meta mt-6">
+                Chiang Mai, TH · Self-hosted on my own homelab
+              </p>
+            </div>
+          </HeroReveal>
         </section>
 
         {/* marquee */}
