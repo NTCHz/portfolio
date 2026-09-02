@@ -27,8 +27,26 @@ contact. One page + resume PDF later.
 
 Brand-voice words: **wired · self-reliant · precise**.
 The site should feel like a machine he operates, not a template he filled in.
-Terminal/systems aesthetic chosen by the owner (rejected a minimal editorial pass
-as bland): grid field, cyan signal glow, terminal motifs, bento project tiers.
+
+The aesthetic that actually ships is dark editorial brutalism. `DESIGN.md` holds
+the full inventory; the short version:
+
+- **Anton**, always uppercase, at poster scale — the hero name runs at an inline
+  `clamp(3rem, 19.5vw, 15rem)` in `app/page.tsx` and the footer's *Let's talk*
+  reaches `10rem`. Scale is the hierarchy; there is no display size ceiling.
+- **Geist Sans** for body copy, **Geist Mono** for every label, index and status
+  line — uppercase, 0.1–0.22em tracking.
+- Orange `--accent` `#ff4d00` on near-black `--bg` `#0c0c0c`, rationed to marks,
+  links, focus rings and the signal field. Five tokens in total.
+- Layout is hairline rules, not cards: a `mix-blend-mode: difference` nav, a
+  full-bleed hero, an outlined marquee band, an editorial work list (mono `/01`
+  index, giant title, description column, SVG architecture diagram), and an
+  archive of four-column rows that invert to dark-on-light on hover. The two
+  live-demo tiles are the only bordered cards on the page.
+- One WebGL layer behind all of it: the signal field, in `--accent`.
+
+History from the original brief, kept as written: the owner rejected a minimal
+editorial pass as จืด/bland before landing here. See the anti-references below.
 
 ## Anti-references
 
