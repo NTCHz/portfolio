@@ -31,7 +31,7 @@ export default function NotFound() {
         </p>
         <Link
           href="/"
-          className="font-mono mt-10 inline-flex w-full sm:w-auto sm:self-start items-center justify-center gap-3 border border-[var(--accent)] px-7 py-4 text-[0.72rem] uppercase tracking-[0.12em] text-[var(--accent)] transition-[background-color,color] duration-300 ease-[var(--ease-expo)] hover:bg-[var(--accent)] hover:text-[#0c0c0c]"
+          className="font-mono mt-10 inline-flex w-full sm:w-auto sm:self-start items-center justify-center border border-[var(--accent)] px-7 py-4 text-[0.72rem] uppercase tracking-[0.12em] text-[var(--accent)] transition-[background-color,color] duration-300 ease-[var(--ease-expo)] hover:bg-[var(--accent)] hover:text-[var(--bg)]"
         >
           Back to all work →
         </Link>
