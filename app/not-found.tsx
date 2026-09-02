@@ -4,7 +4,7 @@ const EMAIL = "nonnylnwzaza.1122@gmail.com";
 
 export default function NotFound() {
   return (
-    <main>
+    <main className="flex min-h-screen flex-col">
       <header className="nav">
         <Link href="/">← Back</Link>
         <span className="hidden sm:inline">
@@ -24,11 +24,15 @@ export default function NotFound() {
             </span>
           </span>
         </h1>
-        <p className="mt-8 max-w-md text-base md:text-lg leading-relaxed text-[var(--muted)]">
+        <p className="meta mt-6">Page not found</p>
+        <p className="mt-4 max-w-md text-base md:text-lg leading-relaxed text-[var(--muted)]">
           This page shipped to nowhere. The system you&apos;re looking for
           moved, or never existed.
         </p>
-        <Link href="/" className="work-cta mt-8">
+        <Link
+          href="/"
+          className="font-mono mt-10 inline-flex w-full sm:w-auto sm:self-start items-center justify-center gap-3 border border-[var(--accent)] px-7 py-4 text-[0.72rem] uppercase tracking-[0.12em] text-[var(--accent)] transition-[background-color,color] duration-300 ease-[var(--ease-expo)] hover:bg-[var(--accent)] hover:text-[#0c0c0c]"
+        >
           Back to all work →
         </Link>
       </section>
